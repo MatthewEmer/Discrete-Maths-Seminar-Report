@@ -103,9 +103,7 @@
 \setcounter{page}{0}
 \newpage
 
-\part{Introduction to Partitions}
-
-\section{Bijective Proofs and Euler's Identity}
+\section{Introduction to Partitions}
 
 \definition{1.1}{A \underline{partition} of \(n \in \N\) is a way of writing \(n\) as the sum of numbers.} These will be denoted in this document as \((p_1+p_2+...+p_i) \vdash n\).
 
@@ -117,13 +115,15 @@
 
 \separate{5}\definition{1.5}{\underline{Conditional partitions} can also be created which limit which partitions are valid based on a given condition.} This can be applied to both partition functions and sets of partitions as \(p(n|condition)\) and \(P(n|condition)\).
 
+\section{Bijective Proofs and Euler's Identity}
+
 \subsection{Bijective Proofs}
 
-\definition{1.1.1}{A \underline{bijection} is a mathematical function that is a one-to-one and onto mapping (Merriam-Webster, 2025).} 
+\definition{2.1.1}{A \underline{bijection} is a mathematical function that is a one-to-one and onto mapping (Merriam-Webster, 2025).} 
 
 \separate{5}We can prove that there is a bijection between two sets \(A\) and \(B\) by defining the functions \(f:A \rightarrow B\) and \(f^{-1}: B \rightarrow A\). This can be useful when trying to compare the size of two partition functions that would be hard to compute as if there is a bijection between two sets of partitions, the corresponding partition functions will be equal.
 
-\separate{5}\textbf{Example 1.1.1}: We can prove that, for any \(n \geq 1, n \in \N,\)
+\separate{5}\textbf{Example 2.1.1}: We can prove that, for any \(n \geq 1, n \in \N,\)
 \[p(n | \textit{all parts are even}) = p(n | \textit{even number of parts})\]
 To prove that these partition functions are equal using a bijection, \\ let \(A = P(n| \textit{all parts are even})\) and \(B = P(n | \textit{even number of parts})\). 
 
@@ -137,11 +137,11 @@ If we take a partition from \(A\), apply \(f\), then apply \(f^{-1}\), the resul
 
 \subsection{Euler's Identity}
 
-\definition{1.2.1}{\underline{Euler's Identity} states that, for any positive integer \(n\),
+\definition{2.2.1}{\underline{Euler's Identity} states that, for any positive integer \(n\),
 \[p(n|\textit{each part is odd}) = p(n|\textit{each part is distinct})\]}
 This identity can be further generalised to get
 
-\separate{5}\theorem{1.2.1}{For any pair of integers, \(k \geq 2, \; n \geq 1\),
+\separate{5}\theorem{2.2.1}{For any pair of integers, \(k \geq 2, \; n \geq 1\),
 \[p(n|\textit{all parts are} \equiv \pm 1 \textit{ mod } k)\footnote[1]{all parts are congruent to (satisfy) the condition.} = p(n|\textit{each part is repeated at most } k-1 \,{times})\]}
 \textbf{Proof}: Let 
 \begin{itemize}
@@ -157,13 +157,11 @@ We can then define \(f^{-1}:B \rightarrow A\) as taking a partition from \(B\) a
 
 \section{Euler Pairs and Alder's Conjecture}
 
-\newpage\part{Visualising Partitions}
-
 \section{Young Diagrams and Ferrers Graphs}
 
-\definition{3.1}{\underline{Young diagrams} represent partitions by stacking rows of \\ squares (corresponding to individual parts) on top of each other, in \\ ascending order (See Figure \ref{fig:visualisationOptions}(a)).}
+\definition{4.1}{\underline{Young diagrams} represent partitions by stacking rows of \\ squares (corresponding to individual parts) on top of each other, in \\ ascending order (See Figure \ref{fig:visualisationOptions}(a)).}
 
-\separate{5}\definition{3.2}{\underline{Ferrers graphs} represent partitions in a similar way, but instead electing to utilise dots instead of squares when representing parts \\(See Figure \ref{fig:visualisationOptions}(b)).} 
+\separate{5}\definition{4.2}{\underline{Ferrers graphs} represent partitions in a similar way, but instead electing to utilise dots instead of squares when representing parts \\(See Figure \ref{fig:visualisationOptions}(b)).} 
 
 \begin{figure}[H]
     \centering
@@ -178,11 +176,9 @@ We can then define \(f^{-1}:B \rightarrow A\) as taking a partition from \(B\) a
 \section{How Big is \textit{p(n)}?}
 \section{Durfee Squares}
 
-\newpage\part{Generating Functions for Partitions}
+\newpage\section{Generating Functions}
 
-\newpage\part{Computing \textit{p(n)}}
-
-\newpage\part{References}
+\newpage\section{References}
 
 Durham University (2026). \textit{Partitions: Worksheet 1-4}.
 
