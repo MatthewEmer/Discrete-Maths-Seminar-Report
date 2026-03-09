@@ -1,0 +1,191 @@
+\documentclass{article}
+
+%% Downloading Packages for the Document.
+
+\usepackage{datetime} % Dates.
+\usepackage{fancyhdr} % Headers.
+\usepackage{lastpage} % Page References.
+
+\usepackage{graphicx} % Inserting Images.
+\usepackage{float} % Postitioning Images.
+
+\usepackage{dirtytalk} % Speech & Quote Marks.
+\usepackage{hyperref} % Hyperlinks and References.
+\usepackage{xcolor} % Coloured Text.
+\usepackage{enumitem} % Letter Bullets. 
+% \begin{enumerate}[label=\alph*.] 
+
+\usepackage{amssymb} % Maths Symbols.
+\usepackage{amsmath} % Maths Tools.
+
+\usepackage{algpseudocode} % Pseudocode.
+\usepackage{algorithm} % Algorithms.
+
+%%
+
+
+%% Creating Formats.
+
+\hypersetup{colorlinks=true, urlcolor=blue, linkcolor=black}
+
+\newdateformat{monthyeardate}
+{%
+    \monthname[\THEMONTH] \THEYEAR
+}
+
+\newdateformat{yeardate}
+{%
+    \THEYEAR
+}
+
+% Colouring and Spacing.
+\newcommand{\colour}[2] {\color{#1}#2\color{black}}
+\newcommand{\separate}[1] {\vspace{#1 pt}\noindent}
+
+% Maths Number Sets.
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+
+% Document Colour Scheme.
+\newcommand{\definition}[2]{\colour{blue}{ \textbf{Definition #1}: #2 }}
+\newcommand{\theorem}[2]{\colour{red}{\textbf{Theorem #1}: #2 }}
+\newcommand{\lemma}[2]{\colour{magenta}{\textbf{Lemma #1}: #2 }}
+
+%%
+
+
+%% Setting up the Document.
+
+\title{Partitions}
+\author{MATTHEW EMERSON}
+\date{\monthyeardate\today} % Edit this to get a static date.
+
+\begin{document}
+
+%%
+
+
+%% Setting the Default Header and Footer. 
+
+\pagestyle{fancy}
+\fancyfoot{}
+\fancyfoot[L]{Written by Matthew Emerson \\ \textit{\LaTeX \,Template: Copyright \date{\yeardate\today}, Matthew Emerson}}
+\fancyfoot[R]{Page \thepage \, of\, \pageref{LastPage}}
+
+%%
+
+
+%% Creating the Title Page.
+
+\maketitle
+\thispagestyle{empty}
+
+%% 
+
+
+%% Creating the Table of Contents Page.
+
+\newpage
+\thispagestyle{empty}
+
+\tableofcontents
+
+\separate{10}In this document, the following colour scheme will be used: \\ \colour{blue}{definitions}, \colour{red}{theorems}, and \colour{magenta}{lemmas}.
+
+%% 
+
+
+%% The Main Document.
+
+\setcounter{page}{0}
+\newpage
+
+\part{Introduction to Partitions}
+
+\section{Bijective Proofs and Euler's Identity}
+
+\definition{1.1}{A \underline{partition} of \(n \in \N\) is a way of writing \(n\) as the sum of numbers.} These will be denoted in this document as \((p_1+p_2+...+p_i) \vdash n\).
+
+\separate{5}\definition{1.2}{A \underline{part} is one of the numbers that make up a partition. It has an associated \underline{part size}, which is the value of the number.}
+
+\separate{5}\definition{1.3}{The \underline{partition function} of \(n\) is the number of possible partitions of \(n\).} This will be denoted as \(p(n) = i\).
+
+\separate{5}\definition{1.4}{The \underline{set of partitions} is the set containing all possible partitions of \(n\).} This will be denoted using non-standard notation as \(P(n) = \{p_1, p_2, ..., p_i\}\) where \(p_x\) is a partition of \(n\) and \(i = p(n)\).
+
+\separate{5}\definition{1.5}{\underline{Conditional partitions} can also be created which limit which partitions are valid based on a given condition.} This can be applied to both partition functions and sets of partitions as \(p(n|condition)\) and \(P(n|condition)\).
+
+\subsection{Bijective Proofs}
+
+\definition{1.1.1}{A \underline{bijection} is a mathematical function that is a one-to-one and onto mapping (Merriam-Webster, 2025).} 
+
+\separate{5}We can prove that there is a bijection between two sets \(A\) and \(B\) by defining the functions \(f:A \rightarrow B\) and \(f^{-1}: B \rightarrow A\). This can be useful when trying to compare the size of two partition functions that would be hard to compute as if there is a bijection between two sets of partitions, the corresponding partition functions will be equal.
+
+\separate{5}\textbf{Example 1.1.1}: We can prove that, for any \(n \geq 1, n \in \N,\)
+\[p(n | \textit{all parts are even}) = p(n | \textit{even number of parts})\]
+To prove that these partition functions are equal using a bijection, \\ let \(A = P(n| \textit{all parts are even})\) and \(B = P(n | \textit{even number of parts})\). 
+
+We can then define $f:A \rightarrow B$ to be the following: For each partition $a \in A$, take its corresponding parts, and replace each of them with two parts half the size. The resulting partition should be a member of $B$.
+\[f: (2a_1 + 2a_2 + ... + 2a_n) \rightarrow (a_1 + a_1 + a_2 + a_2 + ... + a_n + a_n)\]
+
+\newpage\noindent Similarly, we can define $f^{-1}: B \rightarrow A$ as: For each partition $b \in B$, we take its parts and pair each of them with one of corresponding value. These pairs are then replaced with a single part, double the size of the original. The resulting partition should be a member of $A$.
+\[f^{-1}: ((a_1 + a_1) + (a_2 + a_2) + ... + (a_n + a_n)) \rightarrow (2a_1 + 2a_2 + ... + 2a_n)\]
+If we take a partition from \(A\), apply \(f\), then apply \(f^{-1}\), the resulting partition will be the same partition we started with. This means there must be a bijection between \(A\) and \(B\), therefore, for any \(n \geq 1, n \in \N,\)
+\[p(n | \textit{all parts are even}) = p(n | \textit{even number of parts})\]
+
+\subsection{Euler's Identity}
+
+\definition{1.2.1}{\underline{Euler's Identity} states that, for any positive integer \(n\),
+\[p(n|\textit{each part is odd}) = p(n|\textit{each part is distinct})\]}
+This identity can be further generalised to get
+
+\separate{5}\theorem{1.2.1}{For any pair of integers, \(k \geq 2, \; n \geq 1\),
+\[p(n|\textit{all parts are} \equiv \pm 1 \textit{ mod } k)\footnote[1]{all parts are congruent to (satisfy) the condition.} = p(n|\textit{each part is repeated at most } k-1 \,{times})\]}
+\textbf{Proof}: Let 
+\begin{itemize}
+    \item \(A = p(n|\textit{all parts are} \equiv \pm 1 \textit{ mod } k)\)
+    \item \(B = p(n|\textit{each part is repeated at most } k-1 \,{times})\)
+\end{itemize}
+This again can be proved with a bijection. We define \(f:A\rightarrow B\) to be an iterative function which recursively checks a partition from \(A\) for instances of part sizes which appear at least \(k\) times. The function then takes these \(k\)-length tuples, and replaces them with a new part with size \(k\)-times the original size. Once no part size appears more than \(k-1\) times, the resulting partition will be a member of \(B\).
+\[f: ((x_1+x_2+...+x_k)+ y + ...) \rightarrow (kx + y + ...)\]
+We can then define \(f^{-1}:B \rightarrow A\) as taking a partition from \(B\) any parts whose size is a multiple of \(k\) and replacing them with a \(k\)-length tuple of parts whose sizes are \(k\)-times smaller. After all part size multiples of \(k\) are replaced, the resulting partition will be a member of \(A\).
+\[f^{-1}: (kx + y + ...) \rightarrow ((x_1 + x_2 + ... + x_k) + y + ...)\]
+\newpage\noindent Then, if we took a partition from \(A\), applied \(f\) and \(f^{-1}\), the resulting partition would be identical to the original partition, proving that, for any pair of integers, \(k \geq 2, \; n \geq 1\),
+\[p(n|\textit{all parts are} \equiv \pm 1 \textit{ mod } k) = p(n|\textit{each part is repeated at most } k-1 \,{times})\]
+
+\section{Euler Pairs and Alder's Conjecture}
+
+\newpage\part{Visualising Partitions}
+
+\section{Young Diagrams and Ferrers Graphs}
+
+\definition{3.1}{\underline{Young diagrams} represent partitions by stacking rows of \\ squares (corresponding to individual parts) on top of each other, in \\ ascending order (See Figure \ref{fig:visualisationOptions}(a)).}
+
+\separate{5}\definition{3.2}{\underline{Ferrers graphs} represent partitions in a similar way, but instead electing to utilise dots instead of squares when representing parts \\(See Figure \ref{fig:visualisationOptions}(b)).} 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Images/Visualisation Options.png}
+    \caption{Visualisation Options}
+    \label{fig:visualisationOptions}
+\end{figure}
+
+\subsection{Solving Problems with Visualisations}
+
+\section{Conjugate Partitions}
+
+\newpage\part{Generating Functions for Partitions}
+
+\newpage\part{Computing p(n)}
+
+\newpage\part{References}
+
+Durham University (2026). \textit{Partitions: Worksheet 1-4}.
+
+\separate{5}Merriam-Webster (2025). \textit{BIJECTION Definition \& Meaning - Merriam \\ Webster}. [online] Merriam-webster.com. \\ Available at: https://www.merriam-webster.com/dictionary/bijection \\ \([\text{Accessed 9 Mar. 2026}]\).
+
+\end{document}
+
+%%
