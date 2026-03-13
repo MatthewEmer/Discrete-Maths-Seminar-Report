@@ -52,9 +52,11 @@
 \newcommand{\Z}{\mathbb{Z}}
 
 % Document Colour Scheme.
-\newcommand{\definition}[2]{\textbf{Definition #1}: #2 }
-\newcommand{\theorem}[2]{\textbf{Theorem #1}: #2 }
-\newcommand{\lemma}[2]{\textbf{Lemma #1}: #2 }
+\newcommand{\definition}[2]{(#1) \textbf{Definition}: #2}
+\newcommand{\theorem}[2]{(#1) \textbf{Theorem}: #2}
+\newcommand{\lemma}[2]{(#1) \textbf{Lemma}: #2}
+\newcommand{\example}[2]{(#1) \textbf{Example}: #2}
+\newcommand{\conjecture}[2]{(#1) \textbf{Conjecture}: #2}
 
 %%
 
@@ -95,6 +97,8 @@
 
 \tableofcontents
 
+\colour{red}{Fix the diagrams, check equation, figure numbers etc}
+
 %% 
 
 
@@ -105,133 +109,225 @@
 
 \section{Introduction to Partitions}
 
-\definition{1.1}{A \underline{partition} of \(n \in \N\) is a way of writing \(n\) as the sum of numbers.} These will be denoted in this document as \((p_1+p_2+...+p_i) \vdash n\).
+\subsection{Basic Definitions}
 
-\separate{5}\definition{1.2}{A \underline{part} is one of the numbers that make up a partition. It has an associated \underline{part size}, which is the value of the number.}
+\definition{1.1.1}{A \underline{partition} of \(n \in \N\) is a way of writing \(n\) as the sum of numbers.} These will be denoted in this document as \((p_1+p_2+...+p_i) \vdash n\).
 
-\separate{5}\definition{1.3}{The \underline{partition function} of \(n\) is the number of possible partitions of \(n\).} This will be denoted as \(p(n) = i\).
+\separate{5}\definition{1.1.2}{A \underline{part} is one of the numbers that make up a partition. It has an associated \underline{part size}, which is the value of the number.}
 
-\separate{5}\definition{1.4}{The \underline{set of partitions} is the set containing all possible partitions of \(n\).} This will be denoted using non-standard notation as \(P(n) = \{p_1, p_2, ..., p_i\}\) where \(p_x\) is a partition of \(n\) and \(i = p(n)\).
+\separate{5}\definition{1.1.3}{The \underline{partition function} of \(n\) is the number of possible partitions of \(n\).} This will be denoted as \(p(n) = i\).
 
-\separate{5}\definition{1.5}{\underline{Conditional partitions} can also be created which limit which partitions are valid based on a given condition.} This can be applied to both partition functions and sets of partitions as \(p(n|condition)\) and \(P(n|condition)\).
+\separate{5}\definition{1.1.4}{The \underline{set of partitions} is the set containing all possible partitions of \(n\).} This will be denoted using non-standard notation as \(P(n) = \{p_1, p_2, ..., p_i\}\) where \(p_x\) is a partition of \(n\) and \(i = p(n)\).
 
-\section{Bijective Proofs and Euler's Identity}
+\separate{5}\definition{1.1.5}{\underline{Conditional partitions} can also be created which limit which partitions are valid based on a given condition.} This can be applied to both partition functions and sets of partitions as \(p(n|condition)\) and \(P(n|condition)\).
 
 \subsection{Bijective Proofs}
 
-\definition{2.1.1}{A \underline{bijection} is a mathematical function that is a one-to-one and onto mapping (Merriam-Webster, 2025).} 
+
+\definition{1.2.1}{A \underline{bijection} is a mathematical function that is a one-to-one and onto mapping \\ \hyperref[cit:2]{(Merriam-Webster, 2025)}.} 
 
 \separate{5}We can prove that there is a bijection between two sets \(A\) and \(B\) by defining the functions \(f:A \rightarrow B\) and \(f^{-1}: B \rightarrow A\). This can be useful when trying to compare the size of two partition functions that would be hard to compute as if there is a bijection between two sets of partitions, the corresponding partition functions will be equal.
 
-\separate{5}\textbf{Proof 2.1.1}\label{proof:2.1.1}: We can prove that, for any \(n \geq 1, n \in \N,\)\
-\[p(n | \textit{all parts are even}) = p(n | \textit{even number of parts})\]
-To prove that these partition functions are equal using a bijection, let \(A = P(n| \textit{all parts are even})\) and \(B = P(n | \textit{even number of parts})\).
+\separate{5}\example{1.2.2}{For example, we can prove that, for any \(n \geq 1, \;n \in \N,\)}\label{ex:1.2.2}
+\begin{equation}\tag{1.2.3}\label{equ:1.2.3}
+    p(n | \textit{all parts are even}) = p(n | \textit{even number of parts})
+\end{equation}
+To prove \hyperref[equ:1.2.3]{Equation 1.2.3}, we let \(A = P(n | \textit{all parts are even})\) and \(B = P(n | \textit{even number of parts})\) such that \(|A|\) and \(|B|\) equal the sets' respective partition functions. We then define the functions \(f:A \rightarrow B\) and \(f^{-1}:B \rightarrow A\) as:
 
-We can then define $f:A \rightarrow B$ to be the following: For each partition $a \in A$, take its corresponding parts, and replace each of them with two parts half the size. The resulting partition should be a member of $B$.
-\[f: (2a_1 + 2a_2 + ... + 2a_n) \rightarrow (a_1 + a_1 + a_2 + a_2 + ... + a_n + a_n)\]
-Similarly, we can define $f^{-1}: B \rightarrow A$ as: For each partition $b \in B$, we take its parts and pair each of them with one of corresponding value. These pairs are then replaced with a single part, double the size of the original. The resulting partition should be a member of $A$.
+\begin{itemize}
+    \item \(f:A \rightarrow B\): For each partition \(a \in A\), take each of its constituent parts, \(a_i\), and replace each of them with two parts half the size \(\left(\frac{1}{2}a_i + \frac{1}{2}a_i\right)\). The resulting partition should be a member of \(B\). i.e.,
+    \[f: (2a_1 + 2a_2 + ... + 2a_n) \rightarrow (a_1 + a_1 + a_2 + a_2 + ... + a_n + a_n)\]
+    \item \(f^{-1}: B \rightarrow A\): For each partition \(b \in B\), take each of its constituent parts, \(b_i\), and pair each of them with one of equal size. Each pair of parts \((b_i + b_i)\) should then be replaced with a single part, \(2b_i\), double the size of either. The resulting partition should be a member of \(A\). i.e.,
 \[f^{-1}: ((a_1 + a_1) + (a_2 + a_2) + ... + (a_n + a_n)) \rightarrow (2a_1 + 2a_2 + ... + 2a_n)\]
-If we take a partition from \(A\), apply \(f\), then apply \(f^{-1}\), the resulting partition will be the same partition we started with. This means there must be a bijection between \(A\) and \(B\), therefore, for any \(n \geq 1, n \in \N,\)
-\[p(n | \textit{all parts are even}) = p(n | \textit{even number of parts})\]
+\end{itemize}
+Then, to prove \(|A| = |B|\), we take a partition from \(A\) and apply \(f\) and \(f^{-1}\), the resulting partition will be the original partition we started with. This means there must be a bijection between \(A\) and \(B\), and therefore \hyperref[equ:1.2.3]{Equation 1.2.3} holds for any \(n \geq 1, \;n \in \N\).
 
-\subsection{Euler's Identity}
+\newpage\subsection{Euler's Identity}
 
-\definition{2.2.1}{\underline{Euler's Identity} states that, for any positive integer \(n\),
-\[p(n|\textit{each part is odd}) = p(n|\textit{each part is distinct})\]}
+\theorem{1.3.1}{\underline{Euler's Identity}\label{thm:1.3.1} states that, for any positive integer \(n\),
+\begin{equation}\tag{1.3.2}\label{equ:1.3.2}
+    p(n|\textit{each part is odd}) = p(n|\textit{each part is distinct})
+\end{equation}}
 This identity can be further generalised to get
 
-\separate{5}\theorem{2.2.1}{For any pair of integers, \(k \geq 2, \; n \geq 1\),
-\[p(n|\textit{no part is a multiple of } k) = p(n|\textit{each part is repeated at most } k-1 \,{times})\]}
-\textbf{Proof 2.2.1}: Let 
+\separate{5}\theorem{1.3.3}\label{thm:1.3.3}{For any pair of integers, \(k \geq 2, \; n \geq 1\),
+\begin{equation}\tag{1.3.4}\label{equ:1.3.4}
+    p(n|\textit{no part is a multiple of } k) = p(n|\textit{each part is repeated at most } (k-1) \,{times})
+\end{equation}}
+\textbf{Proof}: Let \(A = P(n|\textit{no part is a multiple of } k)\) and \(B = P(n|\textit{each part is repeated at most } k-1 \,{times})\). We then define \(f:A \rightarrow B\) and \(f^{-1}: B \rightarrow A\) as:
 \begin{itemize}
-    \item \(A = P(n|\textit{no part is a multiple of } k)\)
-    \item \(B = P(n|\textit{each part is repeated at most } k-1 \,{times})\)
+    \item \(f:A\rightarrow B\): Take a partition from \(A\). Replace any groups of equally sized parts which appear at least \(k\) times with a new part with size \(k\)-times larger than the original size. Once no part size appears more than \(k-1\) times, the resulting partition will be a member of \(B\). i.e.,
+    \[f: ((x_1+x_2+...+x_k)+ y + ...) \rightarrow (kx + y + ...)\]
+    \item \(f^{-1}:B \rightarrow A\): Take a partition from \(B\). Any parts with size \(kx, x \in \N^{>0}\) are replaced with \(k\)-length tuples of parts who are \(k\)-times smaller. After all part size multiples of \(k\) are replaced, the resulting partition will be a member of \(A\). i.e., 
+    \[f^{-1}: (kx + y + ...) \rightarrow ((x_1 + x_2 + ... + x_k) + y + ...)\]
 \end{itemize}
-This again can be proved with a bijection. We define \(f:A\rightarrow B\) to be an iterative function which recursively checks a partition from \(A\) for instances of part sizes which appear at least \(k\) times. The function then takes these \(k\)-length tuples, and replaces them with a new part with size \(k\)-times the original size. Once no part size appears more than \(k-1\) times, the resulting partition will be a member of \(B\).
-\[f: ((x_1+x_2+...+x_k)+ y + ...) \rightarrow (kx + y + ...)\]
-We can then define \(f^{-1}:B \rightarrow A\) as taking a partition from \(B\) any parts whose size is a multiple of \(k\) and replacing them with a \(k\)-length tuple of parts whose sizes are \(k\)-times smaller. After all part size multiples of \(k\) are replaced, the resulting partition will be a member of \(A\).
-\[f^{-1}: (kx + y + ...) \rightarrow ((x_1 + x_2 + ... + x_k) + y + ...)\]
-Then, if we took a partition from \(A\), applied \(f\) and \(f^{-1}\), the resulting partition would be identical to the original partition, proving that, for any pair of integers, \(k \geq 2, \; n \geq 1\),
-\[p(n|\textit{no part is a multiple of } k) = p(n|\textit{each part is repeated at most } k-1 \,{times})\]
+Then, to prove \(|A| = |B|\), we take a partition from \(A\) and apply \(f\) and \(f^{-1}\), the resulting partition will be the original partition we started with proving that there must be a bijection between \(A\) and \(B\), and therefore \hyperref[equ:1.3.4]{Equation 1.3.4} holds for any pair of integers, \(k \geq 2, \; n \geq 1\). \hyperref[thm:1.3.1]{Euler's Identity} is a specific example of \hyperref[thm:1.3.3]{Theorem 1.3.3} and therefore, must also be true.
 
-\newpage
-\section{Euler Pairs and Alder's Conjecture}
+\subsection{Euler Pairs and Alder's Conjecture}
 
-\colour{red}{THIS SECTION HAS NOT BEEN WRITTEN YET - AND FIX THE DIAGRAMS}
-\newpage
+We recall the following definition and theorem from \hyperref[cit:3]{(Subbarao, 1971)},
 
-\section{Young Diagrams and Ferrers Graphs}
+\separate{5}\definition{1.4.1}{An \underline{Euler pair of order \(r\)} is a pair of sets of integers \(S_1\) and \(S_2\) satisfying, for all \\ \(n \geq 1, \; n \in \N\),}
+\begin{equation}\tag{1.4.2}\label{equ:1.4.2}
+    p(n|\textit{all parts are in } S_2) = p(n|\textit{all parts are repeated at most \((r-1)\) times and in } S_1)
+\end{equation}
+\theorem{1.4.3}{\((S_1,S_2)\) is an Euler pair of order \(r\) if and only if 
+\begin{equation}\tag{1.4.4}\label{eq:1.4.4}
+    rS_1 \subseteq S_1 \textit{ and } S_2 = S_1 - rS_1 \quad
+\end{equation}}\label{thm:1.4.3}
+e.g., \(S_2 = \{s \in S_1 | s \notin rS_1\}\).
 
-\definition{4.1}{\underline{Young diagrams} represent partitions by stacking rows of squares (corresponding to individual parts) on top of each other, in ascending order (See \hyperref[fig:visualisationOptions]{Figure 1(a)}).}
+\separate{2}\textbf{Proof}: \hyperref[thm:1.4.3]{Theorem 1.4.3} is proved comprehensively in \hyperref[cit:3]{(Subbarao, 1971, pp. 333-335)}.
 
-\separate{5}\definition{4.2}{\underline{Ferrers graphs} represent partitions in a similar way, but instead electing to utilise dots instead of squares when representing parts (See \hyperref[fig:visualisationOptions]{Figure 1(b)}).} 
+\separate{5}\conjecture{1.4.5}{From \hyperref[cit:1]{(Durham University, 2026)}, \underline{Alder's Conjecture} is defined as 
+\begin{equation}\tag{1.4.6}\label{eq:1.4.6}
+    p(n | \textit{all parts are in } S_2) = p(n | \textit{k-distinct parts})
+\end{equation}
+which has been proven false for all \(k \geq 3\).
+However, \hyperref[cit:4]{(Yee, 2008, p. 1)} instead states that the number of partitions of \(n\) into parts differing by \(d\) is greater than or equal to that of partitions of \(n\) into parts \(\equiv (mod \;d  + 3)\). This definition of the conjecture was still declared open when this paper was published, and has a greater number of valid cases.}
+
+\section{Visualising Partitions}
+
+\subsection{Young Diagrams and Ferrers Graphs}
+
+\definition{2.1.1}{\underline{Young diagrams} represent partitions by stacking rows of squares (corresponding to individual parts) on top of each other, in ascending order (See \hyperref[fig:1]{Figure 1(a)}).}
+
+\separate{5}\definition{2.1.2}{\underline{Ferrers graphs} represent partitions in a similar way, but instead electing to utilise dots instead of squares when representing parts (See \hyperref[fig:1]{Figure 1(b)}).} 
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\linewidth]{Images/Visualisation Options.png}
     \caption{Visualisation Options}
-    \label{fig:visualisationOptions}
+    \label{fig:1}
 \end{figure}
 
-\noindent From this point, I will be using Ferrers diagrams as my preferred choice of visualisation, but Young diagrams would be equally valid.
+\noindent From this point, I will be using Ferrers graphs as my preferred choice of visualisation, but Young diagrams would be equally valid.
 
 \subsection{Solving Problems with Visualisations}
 
-\textbf{Proof 4.1.1}: Previously, in \hyperref[proof:2.1.1]{Example 2.1.1}, we used a bijection to prove that, for any \(n \geq 1, n \in \N,\)
-\[p(n | \textit{all parts are even}) = p(n | \textit{even number of parts})\]
+\textbf{Example 2.2.1}: Previously, in \hyperref[ex:1.2.2]{Example 1.2.2}, we used a bijection to prove that, for any \(n \geq 1, n \in \N,\)
+\begin{equation}\tag{1.2.3 \small(Repeated)}
+    p(n | \textit{all parts are even}) = p(n | \textit{even number of parts})
+\end{equation}
 This can similarly be achieved using Ferrers graphs by redefining \(f\) and \(f^{-1}\) to be the following:
 \begin{itemize}
-    \item \(f\) can be defined as taking a partition from \(A\), and splitting each constituent part (row of the diagram) down the middle, and using the results to create two new rows. This resulting partition will be a member of \(B\).
-    \item Similarly, we can define \(f^{-1}\) as taking a partition from \(B\), combining parts of equal size into one row, and adding that as a new part. This results in a partition from \(A\).
+    \item \(f:A \rightarrow B\): Take a partition, \(a \in A\), split each constituent part (row of the graph) down the middle, and form two new equally sizes rows. This resulting partition will be a member of \(B\). 
+    \item \(f^{-1}:B \rightarrow A\): Take a partition, \(b \in B\), and combine pairs of equally sized parts into single parts double the size of the originals. This results in a partition from \(A\).
 \end{itemize}
-As we can see in \hyperref[fig:problem4.1.1]{Figure 2}, when the functions are applied in turn to an example partition from \(A\), the resulting partition is also a member of \(A\) while the middle partition is in \(B\). This demonstrates the bijection between the sets and again proves that, for any \(n \geq 1, n \in \N,\)
-\[p(n | \textit{all parts are even}) = p(n | \textit{even number of parts})\]
+As we can see in \hyperref[fig:2]{Figure 2}, when the functions are applied in turn to an example partition from \(A\), the partition becomes a member of \(B\), before being transformed back to the original partition. This demonstrates the bijection between the sets and again proves \hyperref[equ:1.2.3]{Equation 1.2.3}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{Images/Problem 4.1.1.png}
     \caption{Applying \(f\) and \(f^{-1}\)}
-    \label{fig:problem4.1.1}
+    \label{fig:2}
 \end{figure}
 
-\section{Partition Conjugates}
+\subsection{Partition Conjugates}
 
-\definition{5.1}{A \underline{conjugate} of a partition is a partition which has had its rows and columns transposed to give a new partition.}
+\definition{2.3.1}{A \underline{conjugate} of a partition is a partition which has had its rows and columns transposed to give a new partition.}
 
-\separate{5}\definition{5.2}{A \underline{self-conjugate partition} is a partition which is a conjugate of itself; meaning that the original partition is the same as the transposed version.}
+\separate{5}\definition{2.3.2}{A \underline{self-conjugate partition} is a partition which is a conjugate of itself; meaning that the original partition is the same as the transposed version.}
 
-\separate{5}This can produce some interesting results, such as proving that, for any \(n \geq 1, n \in \N\), 
-\[p(n|\textit{self-conjugate}) = p(n|\textit{all parts are both distinct and odd)}\]
-\textbf{Proof 5.1}: This can be again be proved by creating a bijection between the sets \(A = P(n|\textit{self-conjugate})\) and \(B = P(n|\textit{all parts are both distinct and odd})\).
-
-We can define the function \(f:A \rightarrow B\) to be: taking a partition from \(A\), recursively take the dots making up both the first row and column of the Ferrers diagram and form a new row. This is guaranteed to be an odd number as the row and column will be the same length, and will share one dot. This will result in a partition from \(B\).
-
-\(f^{-1}\) can then be defined as: taking a partition from \(B\), take each part, starting from the bottom, get its size \(i\), and create one part of size \(\frac{i}{2}+1\), and \(\frac{i}{2}-1\) parts of size one. This can then be nested inside the previous row. The resulting partition will be a member of \(A\).
-
-When applied in turn on a partition from \(A\), this creates a partition from \(B\) and then returns it back to the original state, demonstrating the bijection, and proving that for any \(n \geq 1, n \in \N\), 
-\[p(n|\textit{self-conjugate}) = p(n|\textit{all parts are both distinct and odd)}\]
+\separate{5}\textbf{Example 2.3.3}: This can produce some interesting results, such as proving that, for any \(n \geq 1, n \in \N\), 
+\begin{equation}\tag{2.3.4}\label{equ:2.3.4}
+    p(n|\textit{self-conjugate}) = p(n|\textit{all parts are both distinct and odd)}
+\end{equation}
+Let \(A = P(n|\textit{self-conjugate})\) and \(B = P(n|\textit{all parts are both distinct and odd})\). We then define \(f:A \rightarrow B\) and \(f^{-1}: B \rightarrow A\) as:
+\begin{itemize}
+    \item \(f:A \rightarrow B\): Take a partition from \(A\). Recursively strip away the upper-left most row and column of the graph and form a new part of size \(2s-1\) where \(s\) is the length of both the row and column. Once this process is finished, the resulting partition will be a member of \(B\).
+    \item \(f^{-1}: B \rightarrow A\): Take a partition from \(B\). Take each constituent part of length \(s\) and use it to form a self-conjugate pattern with height and width \(\frac{s}{2}+1\). Nest this pattern inside the previous one (or on its own for the first). Once this has been done to all the rows, the resulting partition will be a member of \(A\).
+\end{itemize}
+As we can see in \hyperref[fig:3]{Figure 3}, when the functions are applied in turn to an example partition from \(A\), the partition becomes a member of \(B\), before being transformed back to the original partition. This demonstrates the bijection between the sets and again proves \hyperref[equ:2.3.4]{Equation 2.3.4}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\linewidth]{Images/Problem 5.1.png}
+    \includegraphics[width=0.75\linewidth]{Images/Problem 5.1.png}
     \caption{Applying \(f\) and \(f^{-1}\)}
-    \label{fig:problem5.1}
+    \label{fig:3}
 \end{figure}
 
-\section{How Big is \textit{p(n)}?}
+\subsection{How Big is \textit{p(n)}?}
 
-\colour{red}{HERE ONWARDS HAS NOT BEEN WRITTEN YET}
+\colour{red}{OPTIONAL}
 
-\section{Durfee Squares}
+\subsection{Durfee Squares}
 
-\newpage\section{Generating Functions}
+\colour{red}{OPTIONAL}
+
+\section{Generating Functions}
+
+\subsection{Creating Generating Functions for Partitions}
+
+\theorem{3.1.1}{The values of \(p(n)\) can be calculated, for any \(n \geq 0, n \in \N\), by computing the coefficients of the generating function}\label{thm:3.1.1}
+\begin{equation}\tag{3.1.2}\label{eq:3.1.2}
+    \sum^\infty_{n=0}p(n)x^n = \prod^\infty_{j=1}\frac{1}{1-x^j}
+\end{equation}
+\textbf{Proof}: Given that, for some value of \(a \geq 1, \; n \geq 0, \;a,n \in \N\),
+\begin{equation}\tag{3.1.3}\label{eq:3.1.3}
+    \frac{1}{1-x^a} = (x^0+x^{a} + x^{2a} + x^{3a} + ... + x^{ia} + ...) = \sum^\infty_{n=0} x^n
+\end{equation}
+the powers of \(x\) generated are the values which can be represented as partitions solely made from parts of size \(a\). e.g., \(a = 3, \; \frac{1}{1-x^3} = 1 + x^3 + x^6 + x^9 + ... x^{3n} + ...\)
+
+\separate{2}Let \(p_k(n)\) be the number of partitions of \(n\) using parts of at most size \(k\). Based on \hyperref[eq:3.1.3]{Equation 3.1.3}, and that \((x^\alpha)(x^\beta) = x^{\alpha+\beta}\), we can formulate that, for example, 
+\begin{equation}\tag{3.1.4}\label{eq:3.1.4}
+    \sum^\infty_{n=0}p_2(n)x^n = \prod^2_{j=1} \frac{1}{1-x^j} = (1+x+x^2+...)(1+x^2 + x^4+...) = 1 + x + 2x^2 + ...
+\end{equation}
+which can be generalised to be
+\begin{equation}\tag{3.1.5}\label{eq:3.1.5}
+    \sum^\infty_{n=0}p_k(n)x^n = \prod^k_{j=1} \frac{1}{1-x^j}
+\end{equation}
+As \(k \rightarrow \infty\), \(p_k(n) \rightarrow p_\infty(n)\). With this limit, partitions of \(n\) are created using parts of unbounded size, which is equivalent to \(p(n)\), establishing \hyperref[thm:3.1.1]{Theorem 3.1.1}.
+
+\subsection{Solving Problems with Generating Functions}
+
+\separate{5}\theorem{3.2.1}{Given a pair of values \((n, a) \in \N^2, \;n \geq a\), the partition function \(p(n | \geq 1\textit{ part of size a})\) can be computed using}\label{thm:3.2.1}
+\begin{equation}\tag{3.2.2}\label{eq:3.2.2}
+    \sum^\infty_{n=0}p(n |  \geq 1 \textit{ part of size a})x^n = \left(\prod^{a-1}_{i=1}\frac{1}{1-x^i}\right)\left(\frac{x}{1-x^a}\right)\left(\prod^\infty_{j=a+1}\frac{1}{1-x^j}\right)
+\end{equation}
+\textbf{Proof}: \hyperref[eq:3.1.3]{Equation 3.1.3} can be adjusted to require at least one part of size \(a\),
+\begin{equation}\tag{3.2.3}\label{eq:3.2.3}
+    \sum^\infty_{n=1}x^n = x^a + x^{2a} + ... = \frac{x}{1-x^a}
+\end{equation}
+This removes the \(x^0\) term, hence restricting the partition to have at least one part of size \(a\). This adjustment is then incorporated into \hyperref[eq:3.1.2]{Equation 3.1.2} to produce \hyperref[eq:3.2.2]{Equation 3.2.2} and therefore proves \hyperref[thm:3.2.1]{Theorem 3.2.1}.
+
+\separate{5}\theorem{3.2.4}\label{thm:3.2.4}{Given a pair of values \((n, k) \in \N^2, \;n \geq k\), the partition function \(p(n |\textit{exactly k parts})\) can be computed using}
+\begin{equation}\tag{3.2.5}\label{eq:3.2.5}
+    \sum^\infty_{n=0}p(n |\textit{exactly k parts})x^n = \frac{x^k}{(1-x)(1-x^2)(1-x^3)...(1-x^k)}
+\end{equation}
+\textbf{Proof}: Let \(A\) be a partition of \(n\) with exactly \(k\) parts and \(A^T\) be the transposed Ferrers graph of the partition. \(A^T\) will be guaranteed to have at least one part of size \(k\), which will also be the largest part. We can therefore rewrite \hyperref[eq:3.1.10]{Equation 3.1.10} as \(p_k(n | \geq 1 \textit{ part of size k})\). Combining \hyperref[eq:3.1.5]{Equation 3.1.5} and \hyperref[thm:3.1.6]{Theorem 3.1.6}, we get that
+\begin{equation}\tag{3.1.11}\label{eq:3.1.11}
+    \sum^\infty_{n=0}p(n |\textit{exactly k parts})x^n = \left(\prod^{a-1}_{i=1}\frac{1}{1-x^i}\right)\left(\frac{x}{1-x^a}\right)\left(\prod^k_{j=a+1}\frac{1}{1-x^j}\right)
+\end{equation}
+which is equivalent to \hyperref[eq:3.1.10]{Equation 3.1.10}, proving \hyperref[thm:3.1.9]{Theorem 3.1.9}.
+
+\separate{10}\colour{red}{ADD SOME EXAMPLES AND MORE WORKING - FIX NUMBERING}
+
+\section{Computing \textit{p(n)}}
 
 \newpage\section*{References}
 \addcontentsline{toc}{section}{References}
 
-Durham University (2026). \textit{Partitions: Worksheet 1-4}.
+Durham University (2026). \textit{Partitions: Worksheet 1-4}.\label{cit:1}
 
-\separate{10}Merriam-Webster (2025). \textit{BIJECTION Definition \& Meaning - Merriam Webster}. [online] \\ Merriam-webster.com. Available at: https://www.merriam-webster.com/dictionary/bijection \\ \([\text{Accessed 9 Mar. 2026}]\).
+\separate{10}Merriam-Webster (2025). \textit{BIJECTION Definition \& Meaning - Merriam Webster}. [online] \\ Merriam-webster.com. Available at: https://www.merriam-webster.com/dictionary/bijection \\ \([\text{Accessed 9 Mar. 2026}]\).\label{cit:2}
+
+\separate{10}Subbarao, M.V. (1971). \textit{Partition Theorems for Euler Pairs.} Proceedings of the American Mathematical Society, [online] 28(2), pp. 330–336. doi:https://doi.org/10.2307/2037963.\label{cit:3}
+
+\separate{10}Yee, A.J. (2008). \textit{Alder’s Conjecture.} Journal für die reine und angewandte Mathematik (Crelles Journal), [online] 2008(616), pp. 1, 68–88. doi:https://doi.org/10.1515/crelle.2008.018.\label{cit:4}
+
+\noindent\makebox[\linewidth]{\rule{\linewidth}{0.4pt}}
+
+\subsection*{Plagiarism Declaration}
+
+I have read and understood these guidelines. I also understand that any plagiarism could have serious
+consequences for my mark, and for my academic career. 
+
+\separate{3}\textbf{Name}: \textit{Matthew Emerson} 
+
+\separate{3}\textbf{Signed}: \textit{MatthewE} 
+
+\separate{3}\textbf{Date}: \textit{20/03/2026}
 
 \end{document}
 
