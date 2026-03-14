@@ -17,6 +17,7 @@
 
 \usepackage{amssymb} % Maths Symbols.
 \usepackage{amsmath} % Maths Tools.
+\usepackage{ytableau} % Young Diagrams.
 
 \usepackage{algpseudocode} % Pseudocode.
 \usepackage{algorithm} % Algorithms.
@@ -190,18 +191,17 @@ However, \hyperref[cit:4]{(Yee, 2008, p. 1)} instead states that the number of p
 
 \subsection{Young Diagrams and Ferrers Graphs}
 
-\definition{2.1.1}{\underline{Young diagrams} represent partitions by stacking rows of squares (corresponding to individual parts) on top of each other, in ascending order (See \hyperref[fig:1]{Figure 1(a)}).}
+\definition{2.1.1}{\underline{Young diagrams} represent partitions by stacking rows of squares (corresponding to individual parts) on top of each other, in ascending order (See \hyperref[fig:1]{Figure 1}).}
 
-\separate{5}\definition{2.1.2}{\underline{Ferrers graphs} represent partitions in a similar way, but instead electing to utilise dots instead of squares when representing parts (See \hyperref[fig:1]{Figure 1(b)}).} 
+\separate{5}\definition{2.1.2}{\underline{Ferrers graphs} represent partitions in a similar way, but instead electing to utilise dots instead of squares when representing parts.}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\linewidth]{Images/Visualisation Options.png}
-    \caption{Visualisation Options}
-    \label{fig:1}
-\end{figure}
+\[
+    \vcenter{\hbox{\ydiagram{7,4,1}}} \quad\quad
+    \vcenter{\hbox{\ydiagram{6,3,2,2}}}
+\]\label{fig:1}
+{\centering Figure 1: Young diagrams (\(n=13\)) \par}
 
-\noindent From this point, I will be using Ferrers graphs as my preferred choice of visualisation, but Young diagrams would be equally valid.
+\separate{5}From this point, I will be using Young diagrams as my preferred choice of visualisation, but Ferrers graphs would be equally valid.
 
 \subsection{Solving Problems with Visualisations}
 
@@ -216,12 +216,14 @@ This can similarly be achieved using Ferrers graphs by redefining \(f\) and \(f^
 \end{itemize}
 As we can see in \hyperref[fig:2]{Figure 2}, when the functions are applied in turn to an example partition from \(A\), the partition becomes a member of \(B\), before being transformed back to the original partition. This demonstrates the bijection between the sets and again proves \hyperref[equ:1.2.3]{Equation 1.2.3}.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\linewidth]{Images/Problem 4.1.1.png}
-    \caption{Applying \(f\) and \(f^{-1}\)}
-    \label{fig:2}
-\end{figure}
+\[
+    \vcenter{\hbox{\ydiagram{4,2}}} 
+    \quad\xrightarrow{\;\;f\;\;}\quad
+    \vcenter{\hbox{\ydiagram{2,2,1,1}}} 
+    \quad\xrightarrow{f^{-1}}\quad
+    \vcenter{\hbox{\ydiagram{4,2}}}
+\]\label{fig:2}
+{\centering Figure 2: Applying \(f\) and \(f^{-1}\) \par}
 
 \subsection{Partition Conjugates}
 
@@ -240,12 +242,14 @@ Let \(A = P(n|\textit{self-conjugate})\) and \(B = P(n|\textit{all parts are bot
 \end{itemize}
 As we can see in \hyperref[fig:3]{Figure 3}, when the functions are applied in turn to an example partition from \(A\), the partition becomes a member of \(B\), before being transformed back to the original partition. This demonstrates the bijection between the sets and again proves \hyperref[equ:2.3.4]{Equation 2.3.4}.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.75\linewidth]{Images/Problem 5.1.png}
-    \caption{Applying \(f\) and \(f^{-1}\)}
-    \label{fig:3}
-\end{figure}
+\[
+    \vcenter{\hbox{\ydiagram{4,3,3,1}}}
+    \quad\xrightarrow{\;\;f\;\;}\quad
+    \vcenter{\hbox{\ydiagram{7,3,1}}}
+    \quad\xrightarrow{f^{-1}}\quad
+    \vcenter{\hbox{\ydiagram{4,3,3,1}}}
+\]\label{fig:3}
+{\centering Figure 3: Applying \(f\) and \(f^{-1}\) \par}
 
 \subsection{How Big is \textit{p(n)}?}
 
@@ -309,14 +313,58 @@ which is equivalent to \hyperref[eq:3.2.5]{Equation 3.2.5}, proving \hyperref[th
 
 \subsection{Euler's Discovery and Franklin's Construction}
 
-\definition{4.1.1}{The \underline{slope}, s, of a partition is the length of the longest \(45^\circ\) diagonal on a Ferrers diagram as seen in \colour{red}{FIGURE}.}
+\definition{4.1.1}{The \underline{slope}, s, of a partition is the length of the longest \(45^\circ\) diagonal on a Ferrers diagram as seen in \hyperref[fig:4]{Figure 4}.}
 
-\separate{5}\definition{4.1.2}{The \underline{base}, b, of a partition is the size of the smallest part on a Ferrers diagram as seen in \colour{red}{FIGURE}.}
+\separate{5}\definition{4.1.2}{The \underline{base}, b, of a partition is the size of the smallest part on a Ferrers diagram as seen in \hyperref[fig:4]{Figure 4}.}
+
+\[
+    \begin{ytableau}
+        {} & {} & {} & {} & {} & s \\
+        {} & {} & {} & {} & s \\
+        {} & {} & {} & s \\
+        b & b
+    \end{ytableau}
+\]\label{fig:4}
+{\centering Figure 4: Partition slope and base \par}
 
 \separate{5}\definition{4.1.3}{\underline{Franklin's Construction} is defined as one of two cases,}\label{def:4.1.3}
 \begin{itemize}
-    \item If \(s > b\), then the base of the partition should be removed and used to form a new slope, as seen in \colour{red}{FIGURE}.
-    \item If \(s < (b-1)\), then the slope of the partition should be removed and used to form a new base, as seen in \colour{red}{FIGURE}.
+    \item If \(s > b\), then the base of the partition should be removed and used to form a new slope, as seen in \hyperref[fig:5]{Figure 5}.
+
+\[
+    \vcenter{\hbox{\begin{ytableau}
+        {} & {} & {} & {} & {} & s \\
+        {} & {} & {} & {} & s \\
+        {} & {} & {} & s \\
+        b & b
+    \end{ytableau}}}
+    \quad\xrightarrow{\quad}\quad
+    \vcenter{\hbox{\begin{ytableau}
+        {} & {} & {} & {} & {} & s & b \\
+        {} & {} & {} & {} & s & b\\
+        {} & {} & {} & s
+    \end{ytableau}}}
+\]\label{fig:5}
+{\centering Figure 5: Case 1 \par}
+
+    \item If \(s < (b-1)\), then the slope of the partition should be removed and used to form a new base, as seen in \hyperref[fig:6]{Figure 6}.
+
+\[
+    \vcenter{\hbox{\begin{ytableau}
+        {} & {} & {} & {} & {} & s \\
+        {} & {} & {} & {} \\
+        b & b & b
+    \end{ytableau}}}
+    \quad\xrightarrow{\quad}\quad
+    \vcenter{\hbox{\begin{ytableau}
+        {} & {} & {} & {} & {} \\
+        {} & {} & {} & {} \\
+        b & b & b \\
+        s & s 
+    \end{ytableau}}}
+\]\label{fig:6}
+{\centering Figure 6: Case 2 \par}
+
 \end{itemize}
 
 \separate{5}\conjecture{4.1.4}{Euler conjectured that, for most \(n \geq 0, \;n \in \N\),}\label{con:4.1.4}
