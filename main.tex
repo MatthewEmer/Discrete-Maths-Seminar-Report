@@ -295,15 +295,70 @@ This removes the \(x^0\) term, hence restricting the partition to have at least 
 \begin{equation}\tag{3.2.5}\label{eq:3.2.5}
     \sum^\infty_{n=0}p(n |\textit{exactly k parts})x^n = \frac{x^k}{(1-x)(1-x^2)(1-x^3)...(1-x^k)}
 \end{equation}
-\textbf{Proof}: Let \(A\) be a partition of \(n\) with exactly \(k\) parts and \(A^T\) be the transposed Ferrers graph of the partition. \(A^T\) will be guaranteed to have at least one part of size \(k\), which will also be the largest part. We can therefore rewrite \hyperref[eq:3.1.10]{Equation 3.1.10} as \(p_k(n | \geq 1 \textit{ part of size k})\). Combining \hyperref[eq:3.1.5]{Equation 3.1.5} and \hyperref[thm:3.1.6]{Theorem 3.1.6}, we get that
-\begin{equation}\tag{3.1.11}\label{eq:3.1.11}
+\textbf{Proof}: Let \(A\) be a partition of \(n\) with exactly \(k\) parts and \(A^T\) be the transposed Ferrers graph of the partition. \(A^T\) will be guaranteed to have at least one part of size \(k\), which will also be the largest part. We can therefore equate \hyperref[eq:3.2.5]{Equation 3.2.5} to \(p_k(n | \geq 1 \textit{ part of size k})\). Combining \hyperref[eq:3.1.5]{Equation 3.1.5} and \hyperref[thm:3.2.1]{Theorem 3.2.1}, we get that
+\begin{equation}\tag{3.2.6}\label{eq:3.2.6}
     \sum^\infty_{n=0}p(n |\textit{exactly k parts})x^n = \left(\prod^{a-1}_{i=1}\frac{1}{1-x^i}\right)\left(\frac{x}{1-x^a}\right)\left(\prod^k_{j=a+1}\frac{1}{1-x^j}\right)
 \end{equation}
-which is equivalent to \hyperref[eq:3.1.10]{Equation 3.1.10}, proving \hyperref[thm:3.1.9]{Theorem 3.1.9}.
+which is equivalent to \hyperref[eq:3.2.5]{Equation 3.2.5}, proving \hyperref[thm:3.2.4]{Theorem 3.2.4}.
 
-\separate{10}\colour{red}{ADD SOME EXAMPLES AND MORE WORKING - FIX NUMBERING}
+\subsection{Euler's Identity, Rogers-Ramanujan, and More}
 
-\section{Computing \textit{p(n)}}
+\colour{red}{must do problem 3.6}
+
+\newpage\section{Computing \textit{p(n)}}
+
+\subsection{Euler's Discovery and Franklin's Construction}
+
+\definition{4.1.1}{The \underline{slope}, s, of a partition is the length of the longest \(45^\circ\) diagonal on a Ferrers diagram as seen in \colour{red}{FIGURE}.}
+
+\separate{5}\definition{4.1.2}{The \underline{base}, b, of a partition is the size of the smallest part on a Ferrers diagram as seen in \colour{red}{FIGURE}.}
+
+\separate{5}\definition{4.1.3}{\underline{Franklin's Construction} is defined as one of two cases,}\label{def:4.1.3}
+\begin{itemize}
+    \item If \(s > b\), then the base of the partition should be removed and used to form a new slope, as seen in \colour{red}{FIGURE}.
+    \item If \(s < (b-1)\), then the slope of the partition should be removed and used to form a new base, as seen in \colour{red}{FIGURE}.
+\end{itemize}
+
+\separate{5}\conjecture{4.1.4}{Euler conjectured that, for most \(n \geq 0, \;n \in \N\),}\label{con:4.1.4}
+\begin{equation}\tag{4.1.5}\label{eq:4.1.5}
+    p(n | \textit{odd number of distinct parts}) = p(n | \textit{even number of distinct parts})
+\end{equation}
+\textbf{Proof}: Let \(p_o(n) = p(n | \textit{odd number of distinct parts)}\) and \(p_e(n) = p(n | \textit{even number of distinct parts)}\). This conjecture can be proven valid for all \(s \neq (b - x), \; x=\{0,1\}\) using Franklin's Construction as when it is applied, the parity of a partition is flipped, providing a mapping between \(p_o(n)\) and \(p_e(n)\). The construction breaks down one of two cases, 
+\begin{itemize}
+    \item When the slope is equal to the base, they share a point, making the mapping invalid.
+    \item When the slope is exactly one fewer than the base, moving the slope will create an invalid Ferrers diagram as seen in \colour{red}{FIGURE}.
+\end{itemize}
+These exceptional cases occur when \(n\) is a generalised pentagonal number and the slope, \(s\), satisfies
+\begin{equation}\tag{4.1.6}\label{eq:4.1.6}
+    n=\frac{s(3s \pm 1)}{2}
+\end{equation}
+With this in mind, \hyperref[con:4.1.4]{Conjecture 4.1.4} can be refined to produce,
+
+\subsection{Euler's Pentagonal Number Theorem}
+
+\separate{5}\theorem{4.2.2}{\underline{Euler's Pentagonal Number Theorem} defines the piecewise function, for all \(n \geq 0, \; n \in \N\),}\label{thm:4.2.2}
+\begin{equation}\tag{4.2.3}\label{eq:4.2.3}
+    \epsilon(n) = p_e(n) - p_o(n) = 
+    \begin{cases}
+        (-1)^k \quad n = \frac{k(3k\pm1)}{2}, \;k \in \N \\
+        0 \quad\quad\quad otherwise
+    \end{cases}
+\end{equation}
+\textbf{Proof}: From \colour{red}{3.3.X } we have the generating function for distinct parts. We can adapt the equation to account for parity by representing each partition of \(n\) as \((-1)^{no. \, parts}x^n\). This produces the generating function
+\begin{equation}\tag{4.2.4}\label{eq:4.2.4}
+    \sum^\infty_{n=0} \left(p_e(n)-p_o(n)\right)x^n =  \prod^\infty_{j=1}\left(1-x^j\right) = (1-x)(1-x^2)...
+\end{equation}
+Euler discovered that this equation could be combined with \hyperref[eq:4.1.6]{Equation 4.1.6} to get 
+\begin{equation}\tag{4.2.5}\label{eq:4.2.5}
+    \prod^\infty_{j=1}(1-x^j) = 1 + \sum^\infty_{k=1}(-1)^kx^{\frac{1}{2}k(3k+1)} + \sum^\infty_{k=1}(-1)^kx^{\frac{1}{2}k(3k-1)}
+\end{equation}
+and by combining the two summations, we get
+\begin{equation}\tag{4.2.6}\label{eq:4.2.6}
+    \sum^\infty_{n=0}\epsilon(n)x^n = \prod^\infty_{j=1}(1-x^j) = \sum^\infty_{k=-\infty}(-1)^kx^{\frac{1}{2}k(3k-1)}
+\end{equation}
+This generating function produces values for \(\epsilon(n)\) that match with the piecewise function in \hyperref[eq:4.2.3]{Equation 4.2.3}, proving \hyperref[thm:4.2.2]{Theorem 4.2.2}.
+
+\subsection{A Recurrence Relation for \textit{p(n)} and Ramanujan's Congruences}
 
 \newpage\section*{References}
 \addcontentsline{toc}{section}{References}
@@ -314,7 +369,7 @@ Durham University (2026). \textit{Partitions: Worksheet 1-4}.\label{cit:1}
 
 \separate{10}Subbarao, M.V. (1971). \textit{Partition Theorems for Euler Pairs.} Proceedings of the American Mathematical Society, [online] 28(2), pp. 330–336. doi:https://doi.org/10.2307/2037963.\label{cit:3}
 
-\separate{10}Yee, A.J. (2008). \textit{Alder’s Conjecture.} Journal für die reine und angewandte Mathematik (Crelles Journal), [online] 2008(616), pp. 1, 68–88. doi:https://doi.org/10.1515/crelle.2008.018.\label{cit:4}
+\separate{10}Yee, A.J. (2008). \textit{Alder’s Conjecture.} Journal für die reine und angewandte Mathematik (Crelle's Journal), [online] 2008(616), pp. 1, 68–88. doi:https://doi.org/10.1515/crelle.2008.018.\label{cit:4}
 
 \noindent\makebox[\linewidth]{\rule{\linewidth}{0.4pt}}
 
