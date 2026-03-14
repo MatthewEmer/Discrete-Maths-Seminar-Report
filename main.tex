@@ -98,7 +98,7 @@
 
 \tableofcontents
 
-\colour{red}{Fix the diagrams, check equation, figure numbers etc}
+\colour{red}{Check equation, figure numbers etc}
 
 %% 
 
@@ -251,15 +251,46 @@ As we can see in \hyperref[fig:3]{Figure 3}, when the functions are applied in t
 \]\label{fig:3}
 {\centering Figure 3: Applying \(f\) and \(f^{-1}\) \par}
 
-\subsection{How Big is \textit{p(n)}?}
-
-\colour{red}{OPTIONAL}
-
 \subsection{Durfee Squares}
 
-\colour{red}{OPTIONAL}
+\definition{2.4.1}{The \underline{Durfee square} of a Young diagram is the largest square that fits inside the diagram. It has size \(s\) if it has sides of length \(s\).}\label{def:2.4.1}
 
-\section{Generating Functions}
+\[
+    \begin{ytableau}
+        {X} & {X} & {} & {} & {} & {} \\
+        {X} & {X} & {} & {} & {} & {} \\
+        {} \\
+        {}
+    \end{ytableau} \quad\quad
+    \begin{ytableau}
+        {X} & {X} & {} & {} & {} & {} & {} \\
+        {X} & {X} & {} \\
+        {} & {} \\
+        {}
+    \end{ytableau} \quad\quad
+    \begin{ytableau}
+        {X} & {X} & {X} & {} \\
+        {X} & {X} & {X} \\
+        {X} & {X} & {X} \\
+        {X} & {X} & {X} \\
+        {}
+    \end{ytableau}
+\]\label{fig:4}
+{\centering Figure 4: Durfee squares \par}
+
+\separate{5}\theorem{2.4.2}{The number of partitions of \(n\) having a Durfee square of size \(s\) can be written as}\label{thm:2.4.2}
+\begin{equation}\tag{2.4.3}\label{eq:2.4.3}
+    \sum^{n-s^2}_{m=0}p(m | \textit{all parts are } \leq s) \; p(n-m-s^2 | \textit{all parts are } \leq s)
+\end{equation}
+\textbf{Proof}: Let \(A = P(n | \textit{Durfee square of size s})\). We can infer from \hyperref[def:2.4.1]{2.4.1} that the Durfee square will contribute \(s^2\) towards the total area of a partition from \(A\), meaning the remaining area is \(n-s^2\). This remaining area can then be split into the area to the right of the square, \(A_r\), and the area underneath, \(A_u\). 
+
+Let the area of \(A_u\) be \(0 \leq m \leq n-s^2\). We know that, for the Durfee square to be maximal, the constituent parts of \(A_u\) must be at most \(s\), so we get that the number of partitions of \(A_u\) for each size of Durfee square is \(p(m | \textit{all parts are } \leq s)\), meaning the total number of possible partitions is
+\begin{equation}\tag{2.4.4}\label{eq:2.4.4}
+    p(A_u) = \sum^{n-s^2}_{m=0}p(m | \textit{all parts are } \leq s)
+\end{equation}
+This leaves the area of \(A_r\) to be \(n-m-s^2\). As the Durfee square is maximal, the \((s+1)^{th}\) column must also be \(\leq s\), and as the parts are ordered, this also restricts the parts of \(A_r\) to be \(\leq s\). As a result, the number of partitions for each size of Durfee square is \(p(n-m-s^2 | \textit{all parts are } \leq s)\), and when combined with \hyperref[eq:2.4.4]{Equation 2.4.4}, we get \hyperref[eq:2.4.3]{Equation 2.4.3}, proving \hyperref[thm:2.4.2]{Theorem 2.4.2}.
+
+\newpage\section{Generating Functions}
 
 \subsection{Creating Generating Functions for Partitions}
 
@@ -313,9 +344,9 @@ which is equivalent to \hyperref[eq:3.2.5]{Equation 3.2.5}, proving \hyperref[th
 
 \subsection{Euler's Discovery and Franklin's Construction}
 
-\definition{4.1.1}{The \underline{slope}, s, of a partition is the length of the longest \(45^\circ\) diagonal on a Ferrers diagram as seen in \hyperref[fig:4]{Figure 4}.}
+\definition{4.1.1}{The \underline{slope}, s, of a partition is the length of the longest \(45^\circ\) diagonal on a Ferrers diagram as seen in \hyperref[fig:5]{Figure 5}.}
 
-\separate{5}\definition{4.1.2}{The \underline{base}, b, of a partition is the size of the smallest part on a Ferrers diagram as seen in \hyperref[fig:4]{Figure 4}.}
+\separate{5}\definition{4.1.2}{The \underline{base}, b, of a partition is the size of the smallest part on a Ferrers diagram as seen in \hyperref[fig:5]{Figure 5}.}
 
 \[
     \begin{ytableau}
@@ -324,12 +355,12 @@ which is equivalent to \hyperref[eq:3.2.5]{Equation 3.2.5}, proving \hyperref[th
         {} & {} & {} & s \\
         b & b
     \end{ytableau}
-\]\label{fig:4}
-{\centering Figure 4: Partition slope and base \par}
+\]\label{fig:5}
+{\centering Figure 5: Partition slope and base \par}
 
 \separate{5}\definition{4.1.3}{\underline{Franklin's Construction} is defined as one of two cases,}\label{def:4.1.3}
 \begin{itemize}
-    \item If \(s > b\), then the base of the partition should be removed and used to form a new slope, as seen in \hyperref[fig:5]{Figure 5}.
+    \item If \(s > b\), then the base of the partition should be removed and used to form a new slope, as seen in \hyperref[fig:6]{Figure 6}.
 
 \[
     \vcenter{\hbox{\begin{ytableau}
@@ -344,10 +375,10 @@ which is equivalent to \hyperref[eq:3.2.5]{Equation 3.2.5}, proving \hyperref[th
         {} & {} & {} & {} & s & b\\
         {} & {} & {} & s
     \end{ytableau}}}
-\]\label{fig:5}
-{\centering Figure 5: Case 1 \par}
+\]\label{fig:6}
+{\centering Figure 6: Case 1 \par}
 
-    \item If \(s < (b-1)\), then the slope of the partition should be removed and used to form a new base, as seen in \hyperref[fig:6]{Figure 6}.
+    \item If \(s < (b-1)\), then the slope of the partition should be removed and used to form a new base, as seen in \hyperref[fig:7]{Figure 7}.
 
 \[
     \vcenter{\hbox{\begin{ytableau}
@@ -362,8 +393,8 @@ which is equivalent to \hyperref[eq:3.2.5]{Equation 3.2.5}, proving \hyperref[th
         b & b & b \\
         s & s 
     \end{ytableau}}}
-\]\label{fig:6}
-{\centering Figure 6: Case 2 \par}
+\]\label{fig:7}
+{\centering Figure 7: Case 2 \par}
 
 \end{itemize}
 
@@ -373,8 +404,39 @@ which is equivalent to \hyperref[eq:3.2.5]{Equation 3.2.5}, proving \hyperref[th
 \end{equation}
 \textbf{Proof}: Let \(p_o(n) = p(n | \textit{odd number of distinct parts)}\) and \(p_e(n) = p(n | \textit{even number of distinct parts)}\). This conjecture can be proven valid for all \(s \neq (b - x), \; x=\{0,1\}\) using Franklin's Construction as when it is applied, the parity of a partition is flipped, providing a mapping between \(p_o(n)\) and \(p_e(n)\). The construction breaks down one of two cases, 
 \begin{itemize}
-    \item When the slope is equal to the base, they share a point, making the mapping invalid.
-    \item When the slope is exactly one fewer than the base, moving the slope will create an invalid Ferrers diagram as seen in \colour{red}{FIGURE}.
+    \item When the slope is equal to the base, they will share a point, meaning the mapping is invalid as it would leave missing cells in the diagram (See \hyperref[fig:8]{Figure 8}).
+
+\[
+    \vcenter{\hbox{\begin{ytableau}
+        {} & {} & {} & {} & s \\
+        {} & {} & {} & s \\
+        b & b & ?
+    \end{ytableau}}}
+    \quad\xrightarrow{\quad}\quad
+    \vcenter{\hbox{\begin{ytableau}
+        {} & {} & {} & {} & s & b \\
+        {} & {} & {} & s & b \\
+        \none & \none & \none & ?
+    \end{ytableau}}}
+\]\label{fig:8}
+{\centering Figure 8: Invalid Case 1 \par}
+
+    \item When the slope is exactly one fewer than the base, moving the slope will create an invalid Young diagram as seen in \hyperref[fig:9]{Figure 9} as the parts must be distinct.
+
+\[
+    \vcenter{\hbox{\begin{ytableau}
+        {} & {} & {} & s \\
+        b & b & bs
+    \end{ytableau}}}
+    \quad\xrightarrow{\quad}\quad
+    \vcenter{\hbox{\begin{ytableau}
+        {} & {} & {} \\
+        b & b \\
+        s & s
+    \end{ytableau}}}
+\]\label{fig:9}
+{\centering Figure 9: Invalid Case 2 \par}
+
 \end{itemize}
 These exceptional cases occur when \(n\) is a generalised pentagonal number and the slope, \(s\), satisfies
 \begin{equation}\tag{4.1.6}\label{eq:4.1.6}
@@ -409,6 +471,8 @@ This generating function produces values for \(\epsilon(n)\) that match with the
 \subsection{A Recurrence Relation for \textit{p(n)} and Ramanujan's Congruences}
 
 \newpage\section*{References}
+\addtocounter{page}{-1}
+\pagestyle{empty}
 \addcontentsline{toc}{section}{References}
 
 Durham University (2026). \textit{Partitions: Worksheet 1-4}.\label{cit:1}
