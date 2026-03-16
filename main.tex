@@ -58,6 +58,7 @@
 \newcommand{\lemma}[2]{(#1) \textbf{Lemma}: #2}
 \newcommand{\example}[2]{(#1) \textbf{Example}: #2}
 \newcommand{\conjecture}[2]{(#1) \textbf{Conjecture}: #2}
+\newcommand{\proof}[1]{\textbf{Proof}: #1 \begin{flushright}\(\square\)\end{flushright}}
 
 %%
 
@@ -98,7 +99,7 @@
 
 \tableofcontents
 
-\colour{red}{Check equation, figure numbers etc}
+\colour{red}{Check page spacings and equation and figure numbers etc}
 
 %% 
 
@@ -133,7 +134,7 @@
 \begin{equation}\tag{1.2.3}\label{equ:1.2.3}
     p(n | \textit{all parts are even}) = p(n | \textit{even number of parts})
 \end{equation}
-To prove \hyperref[equ:1.2.3]{Equation 1.2.3}, we let \(A = P(n | \textit{all parts are even})\) and \(B = P(n | \textit{even number of parts})\) such that \(|A|\) and \(|B|\) equal the sets' respective partition functions. We then define the functions \(f:A \rightarrow B\) and \(f^{-1}:B \rightarrow A\) as:
+\proof{To prove \hyperref[equ:1.2.3]{Equation 1.2.3}, we let \(A = P(n | \textit{all parts are even})\) and \(B = P(n | \textit{even number of parts})\) such that \(|A|\) and \(|B|\) equal the sets' respective partition functions. We then define the functions \(f:A \rightarrow B\) and \(f^{-1}:B \rightarrow A\) as:
 
 \begin{itemize}
     \item \(f:A \rightarrow B\): For each partition \(a \in A\), take each of its constituent parts, \(a_i\), and replace each of them with two parts half the size \(\left(\frac{1}{2}a_i + \frac{1}{2}a_i\right)\). The resulting partition should be a member of \(B\). i.e.,
@@ -141,7 +142,7 @@ To prove \hyperref[equ:1.2.3]{Equation 1.2.3}, we let \(A = P(n | \textit{all pa
     \item \(f^{-1}: B \rightarrow A\): For each partition \(b \in B\), take each of its constituent parts, \(b_i\), and pair each of them with one of equal size. Each pair of parts \((b_i + b_i)\) should then be replaced with a single part, \(2b_i\), double the size of either. The resulting partition should be a member of \(A\). i.e.,
 \[f^{-1}: ((a_1 + a_1) + (a_2 + a_2) + ... + (a_n + a_n)) \rightarrow (2a_1 + 2a_2 + ... + 2a_n)\]
 \end{itemize}
-Then, to prove \(|A| = |B|\), we take a partition from \(A\) and apply \(f\) and \(f^{-1}\), the resulting partition will be the original partition we started with. This means there must be a bijection between \(A\) and \(B\), and therefore \hyperref[equ:1.2.3]{Equation 1.2.3} holds for any \(n \geq 1, \;n \in \N\).
+Then, to prove \(|A| = |B|\), we take a partition from \(A\) and apply \(f\) and \(f^{-1}\), the resulting partition will be the original partition we started with. This means there must be a bijection between \(A\) and \(B\), and therefore \hyperref[equ:1.2.3]{Equation 1.2.3} holds for any \(n \geq 1, \;n \in \N\).}
 
 \newpage\subsection{Euler's Identity}
 
@@ -155,14 +156,14 @@ This identity can be further generalised to get
 \begin{equation}\tag{1.3.4}\label{equ:1.3.4}
     p(n|\textit{no part is a multiple of } k) = p(n|\textit{each part is repeated at most } (k-1) \,{times})
 \end{equation}}
-\textbf{Proof}: Let \(A = P(n|\textit{no part is a multiple of } k)\) and \(B = P(n|\textit{each part is repeated at most } k-1 \,{times})\). We then define \(f:A \rightarrow B\) and \(f^{-1}: B \rightarrow A\) as:
+\proof{Let \(A = P(n|\textit{no part is a multiple of } k)\) and \(B = P(n|\textit{each part is repeated at most } k-1 \,{times})\). We then define \(f:A \rightarrow B\) and \(f^{-1}: B \rightarrow A\) as:
 \begin{itemize}
     \item \(f:A\rightarrow B\): Take a partition from \(A\). Replace any groups of equally sized parts which appear at least \(k\) times with a new part with size \(k\)-times larger than the original size. Once no part size appears more than \(k-1\) times, the resulting partition will be a member of \(B\). i.e.,
     \[f: ((x_1+x_2+...+x_k)+ y + ...) \rightarrow (kx + y + ...)\]
     \item \(f^{-1}:B \rightarrow A\): Take a partition from \(B\). Any parts with size \(kx, x \in \N^{>0}\) are replaced with \(k\)-length tuples of parts who are \(k\)-times smaller. After all part size multiples of \(k\) are replaced, the resulting partition will be a member of \(A\). i.e., 
     \[f^{-1}: (kx + y + ...) \rightarrow ((x_1 + x_2 + ... + x_k) + y + ...)\]
 \end{itemize}
-Then, to prove \(|A| = |B|\), we take a partition from \(A\) and apply \(f\) and \(f^{-1}\), the resulting partition will be the original partition we started with proving that there must be a bijection between \(A\) and \(B\), and therefore \hyperref[equ:1.3.4]{Equation 1.3.4} holds for any pair of integers, \(k \geq 2, \; n \geq 1\). \hyperref[thm:1.3.1]{Euler's Identity} is a specific example of \hyperref[thm:1.3.3]{Theorem 1.3.3} and therefore, must also be true.
+Then, to prove \(|A| = |B|\), we take a partition from \(A\) and apply \(f\) and \(f^{-1}\), the resulting partition will be the original partition we started with proving that there must be a bijection between \(A\) and \(B\), and therefore \hyperref[equ:1.3.4]{Equation 1.3.4} holds for any pair of integers, \(k \geq 2, \; n \geq 1\). \hyperref[thm:1.3.1]{Euler's Identity} is a specific example of \hyperref[thm:1.3.3]{Theorem 1.3.3} and therefore, must also be true.}
 
 \subsection{Euler Pairs and Alder's Conjecture}
 
@@ -178,7 +179,7 @@ We recall the following definition and theorem from \hyperref[cit:3]{(Subbarao, 
 \end{equation}}\label{thm:1.4.3}
 e.g., \(S_2 = \{s \in S_1 | s \notin rS_1\}\).
 
-\separate{2}\textbf{Proof}: \hyperref[thm:1.4.3]{Theorem 1.4.3} is proved comprehensively in \hyperref[cit:3]{(Subbarao, 1971, pp. 333-335)}.
+\separate{2}\proof{\hyperref[thm:1.4.3]{Theorem 1.4.3} is proved comprehensively in \hyperref[cit:3]{(Subbarao, 1971, pp. 333-335)}.}
 
 \separate{5}\conjecture{1.4.5}{From \hyperref[cit:1]{(Durham University, 2026)}, \underline{Alder's Conjecture} is defined as 
 \begin{equation}\tag{1.4.6}\label{eq:1.4.6}
@@ -209,7 +210,7 @@ However, \hyperref[cit:4]{(Yee, 2008, p. 1)} instead states that the number of p
 \begin{equation}\tag{1.2.3 \small(Repeated)}
     p(n | \textit{all parts are even}) = p(n | \textit{even number of parts})
 \end{equation}
-This can similarly be achieved using Ferrers graphs by redefining \(f\) and \(f^{-1}\) to be the following:
+\proof{This can similarly be achieved using Ferrers graphs by redefining \(f\) and \(f^{-1}\) to be the following:
 \begin{itemize}
     \item \(f:A \rightarrow B\): Take a partition, \(a \in A\), split each constituent part (row of the graph) down the middle, and form two new equally sizes rows. This resulting partition will be a member of \(B\). 
     \item \(f^{-1}:B \rightarrow A\): Take a partition, \(b \in B\), and combine pairs of equally sized parts into single parts double the size of the originals. This results in a partition from \(A\).
@@ -223,7 +224,7 @@ As we can see in \hyperref[fig:2]{Figure 2}, when the functions are applied in t
     \quad\xrightarrow{f^{-1}}\quad
     \vcenter{\hbox{\ydiagram{4,2}}}
 \]\label{fig:2}
-{\centering Figure 2: Applying \(f\) and \(f^{-1}\) \par}
+{\centering Figure 2: Applying \(f\) and \(f^{-1}\) \par}}
 
 \subsection{Partition Conjugates}
 
@@ -231,11 +232,11 @@ As we can see in \hyperref[fig:2]{Figure 2}, when the functions are applied in t
 
 \separate{5}\definition{2.3.2}{A \underline{self-conjugate partition} is a partition which is a conjugate of itself; meaning that the original partition is the same as the transposed version.}
 
-\separate{5}\textbf{Example 2.3.3}: This can produce some interesting results, such as proving that, for any \(n \geq 1, n \in \N\), 
+\newpage\noindent\textbf{Example 2.3.3}: This can produce some interesting results, such as proving that, for any \(n \geq 1, n \in \N\), 
 \begin{equation}\tag{2.3.4}\label{equ:2.3.4}
     p(n|\textit{self-conjugate}) = p(n|\textit{all parts are both distinct and odd)}
 \end{equation}
-Let \(A = P(n|\textit{self-conjugate})\) and \(B = P(n|\textit{all parts are both distinct and odd})\). We then define \(f:A \rightarrow B\) and \(f^{-1}: B \rightarrow A\) as:
+\proof{Let \(A = P(n|\textit{self-conjugate})\) and \(B = P(n|\textit{all parts are both distinct and odd})\). We then define \(f:A \rightarrow B\) and \(f^{-1}: B \rightarrow A\) as:
 \begin{itemize}
     \item \(f:A \rightarrow B\): Take a partition from \(A\). Recursively strip away the upper-left most row and column of the graph and form a new part of size \(2s-1\) where \(s\) is the length of both the row and column. Once this process is finished, the resulting partition will be a member of \(B\).
     \item \(f^{-1}: B \rightarrow A\): Take a partition from \(B\). Take each constituent part of length \(s\) and use it to form a self-conjugate pattern with height and width \(\frac{s}{2}+1\). Nest this pattern inside the previous one (or on its own for the first). Once this has been done to all the rows, the resulting partition will be a member of \(A\).
@@ -249,7 +250,7 @@ As we can see in \hyperref[fig:3]{Figure 3}, when the functions are applied in t
     \quad\xrightarrow{f^{-1}}\quad
     \vcenter{\hbox{\ydiagram{4,3,3,1}}}
 \]\label{fig:3}
-{\centering Figure 3: Applying \(f\) and \(f^{-1}\) \par}
+{\centering Figure 3: Applying \(f\) and \(f^{-1}\) \par}}
 
 \subsection{Durfee Squares}
 
@@ -282,15 +283,15 @@ As we can see in \hyperref[fig:3]{Figure 3}, when the functions are applied in t
 \begin{equation}\tag{2.4.3}\label{eq:2.4.3}
     \sum^{n-s^2}_{m=0}p(m | \textit{all parts are } \leq s) \; p(n-m-s^2 | \textit{all parts are } \leq s)
 \end{equation}
-\textbf{Proof}: Let \(A = P(n | \textit{Durfee square of size s})\). We can infer from \hyperref[def:2.4.1]{2.4.1} that the Durfee square will contribute \(s^2\) towards the total area of a partition from \(A\), meaning the remaining area is \(n-s^2\). This remaining area can then be split into the area to the right of the square, \(A_r\), and the area underneath, \(A_u\). 
+\proof{Let \(A = P(n | \textit{Durfee square of size s})\). We can infer from \hyperref[def:2.4.1]{2.4.1} that the Durfee square will contribute \(s^2\) towards the total area of a partition from \(A\), meaning the remaining area is \(n-s^2\). This remaining area can then be split into the area to the right of the square, \(A_r\), and the area underneath, \(A_u\). 
 
 Let the area of \(A_u\) be \(0 \leq m \leq n-s^2\). We know that, for the Durfee square to be maximal, the constituent parts of \(A_u\) must be at most \(s\), so we get that the number of partitions of \(A_u\) for each size of Durfee square is \(p(m | \textit{all parts are } \leq s)\), meaning the total number of possible partitions is
 \begin{equation}\tag{2.4.4}\label{eq:2.4.4}
     p(A_u) = \sum^{n-s^2}_{m=0}p(m | \textit{all parts are } \leq s)
 \end{equation}
-This leaves the area of \(A_r\) to be \(n-m-s^2\). As the Durfee square is maximal, the \((s+1)^{th}\) column must also be \(\leq s\), and as the parts are ordered, this also restricts the parts of \(A_r\) to be \(\leq s\). As a result, the number of partitions for each size of Durfee square is \(p(n-m-s^2 | \textit{all parts are } \leq s)\), and when combined with \hyperref[eq:2.4.4]{Equation 2.4.4}, we get \hyperref[eq:2.4.3]{Equation 2.4.3}, proving \hyperref[thm:2.4.2]{Theorem 2.4.2}.
+This leaves the area of \(A_r\) to be \(n-m-s^2\). As the Durfee square is maximal, the \((s+1)^{th}\) column must also be \(\leq s\), and as the parts are ordered, this also restricts the parts of \(A_r\) to be \(\leq s\). As a result, the number of partitions for each size of Durfee square is \(p(n-m-s^2 | \textit{all parts are } \leq s)\), and when combined with \hyperref[eq:2.4.4]{Equation 2.4.4}, we get \hyperref[eq:2.4.3]{Equation 2.4.3}, proving \hyperref[thm:2.4.2]{Theorem 2.4.2}.}
 
-\newpage\section{Generating Functions}
+\section{Generating Functions}
 
 \subsection{Creating Generating Functions for Partitions}
 
@@ -298,7 +299,7 @@ This leaves the area of \(A_r\) to be \(n-m-s^2\). As the Durfee square is maxim
 \begin{equation}\tag{3.1.2}\label{eq:3.1.2}
     \sum^\infty_{n=0}p(n)x^n = \prod^\infty_{j=1}\frac{1}{1-x^j}
 \end{equation}
-\textbf{Proof}: Given that, for some value of \(a \geq 1, \; n \geq 0, \;a,n \in \N\),
+\proof{Given that, for some value of \(a \geq 1, \; n \geq 0, \;a,n \in \N\),
 \begin{equation}\tag{3.1.3}\label{eq:3.1.3}
     \frac{1}{1-x^a} = (x^0+x^{a} + x^{2a} + x^{3a} + ... + x^{ia} + ...) = \sum^\infty_{n=0} x^n
 \end{equation}
@@ -312,7 +313,7 @@ which can be generalised to be
 \begin{equation}\tag{3.1.5}\label{eq:3.1.5}
     \sum^\infty_{n=0}p_k(n)x^n = \prod^k_{j=1} \frac{1}{1-x^j}
 \end{equation}
-As \(k \rightarrow \infty\), \(p_k(n) \rightarrow p_\infty(n)\). With this limit, partitions of \(n\) are created using parts of unbounded size, which is equivalent to \(p(n)\), establishing \hyperref[thm:3.1.1]{Theorem 3.1.1}.
+As \(k \rightarrow \infty\), \(p_k(n) \rightarrow p_\infty(n)\). With this limit, partitions of \(n\) are created using parts of unbounded size, which is equivalent to \(p(n)\), establishing \hyperref[thm:3.1.1]{Theorem 3.1.1}.}
 
 \subsection{Solving Problems with Generating Functions}
 
@@ -320,23 +321,23 @@ As \(k \rightarrow \infty\), \(p_k(n) \rightarrow p_\infty(n)\). With this limit
 \begin{equation}\tag{3.2.2}\label{eq:3.2.2}
     \sum^\infty_{n=0}p(n |  \geq 1 \textit{ part of size a})x^n = \left(\prod^{a-1}_{i=1}\frac{1}{1-x^i}\right)\left(\frac{x}{1-x^a}\right)\left(\prod^\infty_{j=a+1}\frac{1}{1-x^j}\right)
 \end{equation}
-\textbf{Proof}: \hyperref[eq:3.1.3]{Equation 3.1.3} can be adjusted to require at least one part of size \(a\),
+\proof{\hyperref[eq:3.1.3]{Equation 3.1.3} can be adjusted to require at least one part of size \(a\),
 \begin{equation}\tag{3.2.3}\label{eq:3.2.3}
     \sum^\infty_{n=1}x^n = x^a + x^{2a} + ... = \frac{x}{1-x^a}
 \end{equation}
-This removes the \(x^0\) term, hence restricting the partition to have at least one part of size \(a\). This adjustment is then incorporated into \hyperref[eq:3.1.2]{Equation 3.1.2} to produce \hyperref[eq:3.2.2]{Equation 3.2.2} and therefore proves \hyperref[thm:3.2.1]{Theorem 3.2.1}.
+\newpage\noindent This removes the \(x^0\) term, hence restricting the partition to have at least one part of size \(a\). This adjustment is then incorporated into \hyperref[eq:3.1.2]{Equation 3.1.2} to produce \hyperref[eq:3.2.2]{Equation 3.2.2} and therefore proves \hyperref[thm:3.2.1]{Theorem 3.2.1}.}
 
 \separate{5}\theorem{3.2.4}\label{thm:3.2.4}{Given a pair of values \((n, k) \in \N^2, \;n \geq k\), the partition function \(p(n |\textit{exactly k parts})\) can be computed using}
 \begin{equation}\tag{3.2.5}\label{eq:3.2.5}
     \sum^\infty_{n=0}p(n |\textit{exactly k parts})x^n = \frac{x^k}{(1-x)(1-x^2)(1-x^3)...(1-x^k)}
 \end{equation}
-\textbf{Proof}: Let \(A\) be a partition of \(n\) with exactly \(k\) parts and \(A^T\) be the transposed Ferrers graph of the partition. \(A^T\) will be guaranteed to have at least one part of size \(k\), which will also be the largest part. We can therefore equate \hyperref[eq:3.2.5]{Equation 3.2.5} to \(p_k(n | \geq 1 \textit{ part of size k})\). Combining \hyperref[eq:3.1.5]{Equation 3.1.5} and \hyperref[thm:3.2.1]{Theorem 3.2.1}, we get that
+\proof{Let \(A\) be a partition of \(n\) with exactly \(k\) parts and \(A^T\) be the transposed Ferrers graph of the partition. \(A^T\) will be guaranteed to have at least one part of size \(k\), which will also be the largest part. We can therefore equate \hyperref[eq:3.2.5]{Equation 3.2.5} to \(p_k(n | \geq 1 \textit{ part of size k})\). Combining \hyperref[eq:3.1.5]{Equation 3.1.5} and \hyperref[thm:3.2.1]{Theorem 3.2.1}, we get that
 \begin{equation}\tag{3.2.6}\label{eq:3.2.6}
     \sum^\infty_{n=0}p(n |\textit{exactly k parts})x^n = \left(\prod^{a-1}_{i=1}\frac{1}{1-x^i}\right)\left(\frac{x}{1-x^a}\right)\left(\prod^k_{j=a+1}\frac{1}{1-x^j}\right)
 \end{equation}
-which is equivalent to \hyperref[eq:3.2.5]{Equation 3.2.5}, proving \hyperref[thm:3.2.4]{Theorem 3.2.4}.
+which is equivalent to \hyperref[eq:3.2.5]{Equation 3.2.5}, proving \hyperref[thm:3.2.4]{Theorem 3.2.4}.}
 
-\subsection{Euler's Identity, Rogers-Ramanujan, and More}
+\subsection{Euler's Identity, Rogers-Ramanujan, and More *}
 
 \colour{red}{must do problem 3.6}
 
@@ -402,7 +403,7 @@ which is equivalent to \hyperref[eq:3.2.5]{Equation 3.2.5}, proving \hyperref[th
 \begin{equation}\tag{4.1.5}\label{eq:4.1.5}
     p(n | \textit{odd number of distinct parts}) = p(n | \textit{even number of distinct parts})
 \end{equation}
-\textbf{Proof}: Let \(p_o(n) = p(n | \textit{odd number of distinct parts)}\) and \(p_e(n) = p(n | \textit{even number of distinct parts)}\). This conjecture can be proven valid for all \(s \neq (b - x), \; x=\{0,1\}\) using Franklin's Construction as when it is applied, the parity of a partition is flipped, providing a mapping between \(p_o(n)\) and \(p_e(n)\). The construction breaks down one of two cases, 
+\proof{Let \(p_o(n) = p(n | \textit{odd number of distinct parts)}\) and \(p_e(n) = p(n | \textit{even number of distinct parts)}\). This conjecture can be proven valid for all \(s \neq (b - x), \; x=\{0,1\}\) using Franklin's Construction as when it is applied, the parity of a partition is flipped, providing a mapping between \(p_o(n)\) and \(p_e(n)\). The construction breaks down one of two cases, 
 \begin{itemize}
     \item When the slope is equal to the base, they will share a point, meaning the mapping is invalid as it would leave missing cells in the diagram (See \hyperref[fig:8]{Figure 8}).
 
@@ -441,7 +442,7 @@ which is equivalent to \hyperref[eq:3.2.5]{Equation 3.2.5}, proving \hyperref[th
 These exceptional cases occur when \(n\) is a generalised pentagonal number and the slope, \(s\), satisfies
 \begin{equation}\tag{4.1.6}\label{eq:4.1.6}
     n=\frac{s(3s \pm 1)}{2}
-\end{equation}
+\end{equation}}
 With this in mind, \hyperref[con:4.1.4]{Conjecture 4.1.4} can be refined to produce,
 
 \subsection{Euler's Pentagonal Number Theorem}
@@ -454,7 +455,7 @@ With this in mind, \hyperref[con:4.1.4]{Conjecture 4.1.4} can be refined to prod
         0 \quad\quad\quad otherwise
     \end{cases}
 \end{equation}
-\textbf{Proof}: From \colour{red}{3.3.X } we have the generating function for distinct parts. We can adapt the equation to account for parity by representing each partition of \(n\) as \((-1)^{no. \, parts}x^n\). This produces the generating function
+\proof{From \colour{red}{3.3.X } we have the generating function for distinct parts. We can adapt the equation to account for parity by representing each partition of \(n\) as \((-1)^{no. \, parts}x^n\). This produces the generating function
 \begin{equation}\tag{4.2.4}\label{eq:4.2.4}
     \sum^\infty_{n=0} \left(p_e(n)-p_o(n)\right)x^n =  \prod^\infty_{j=1}\left(1-x^j\right) = (1-x)(1-x^2)...
 \end{equation}
@@ -466,9 +467,9 @@ and by combining the two summations, we get
 \begin{equation}\tag{4.2.6}\label{eq:4.2.6}
     \sum^\infty_{n=0}\epsilon(n)x^n = \prod^\infty_{j=1}(1-x^j) = \sum^\infty_{k=-\infty}(-1)^kx^{\frac{1}{2}k(3k-1)}
 \end{equation}
-This generating function produces values for \(\epsilon(n)\) that match with the piecewise function in \hyperref[eq:4.2.3]{Equation 4.2.3}, proving \hyperref[thm:4.2.2]{Theorem 4.2.2}.
+This generating function produces values for \(\epsilon(n)\) that match with the piecewise function in \hyperref[eq:4.2.3]{Equation 4.2.3}, proving \hyperref[thm:4.2.2]{Theorem 4.2.2}.}
 
-\subsection{A Recurrence Relation for \textit{p(n)} and Ramanujan's Congruences}
+\newpage\subsection{A Recurrence Relation for \textit{p(n)} and Ramanujan's Congruences *}
 
 \newpage\section*{References}
 \addtocounter{page}{-1}
