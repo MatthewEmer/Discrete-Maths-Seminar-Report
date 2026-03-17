@@ -99,7 +99,7 @@
 
 \tableofcontents
 
-\colour{red}{Check page spacings and equation and figure numbers etc}
+\separate{5}\colour{red}{Check page spacings and equation and figure numbers etc.}
 
 %% 
 
@@ -339,7 +339,22 @@ which is equivalent to \hyperref[eq:3.2.5]{Equation 3.2.5}, proving \hyperref[th
 
 \subsection{Euler's Identity, Rogers-Ramanujan, and More *}
 
-\colour{red}{must do problem 3.6}
+\theorem{3.3.1}\label{thm:3.3.1}{For all \(n > 0, n \in \N\), 
+\begin{equation}\tag{3.3.2}\label{eq:3.3.2}
+    p(n | \textit{each part is odd}) = p(n | \textit{the parts are distinct})
+\end{equation}}
+\proof{We can adapt the generating function for partitions given by \hyperref[thm:3.1.1]{Theorem 3.1.1} to create a generating function for \(p(n|\textit{each part is odd})\) by excluding the even powers of \(x\). We accomplish this by dividing the unchanged generating function by the generating function for partitions made from even parts,
+\begin{equation}\tag{3.3.3}\label{eq:3.3.3}
+    \left(\prod^\infty_{j=1} \frac{1}{1-x^{j}}\right)\left(\prod^\infty_{j=1} \frac{1}{1-x^{2j}}\right)^{-1} = \prod^\infty_{j=1}(1+x^j)
+\end{equation}
+Similarly, for \(p(n|\textit{the parts are distinct})\) we can define the term expansion as 
+\[(1+x)(1+x^2)(1+x^3)...\]
+as each term can either appear 0 or 1 times. When expanded for all \(n\geq1, n \in \N\), we get 
+\begin{equation}\tag{3.3.4}\label{eq:3.3.4}
+    (1+x)(1+x^2)(1+x^3)...(1+x^n)... = \prod^\infty_{j=1}(1+x^j)
+\end{equation}
+As the generating functions for these two partitions are equal, their corresponding partition functions must also be equal, proving \hyperref[thm:3.3.1]{Theorem 3.3.1}.}
+\newpage\colour{red}{prove for case k as to link to Euler's identity.}
 
 \newpage\section{Computing \textit{p(n)}}
 
@@ -455,7 +470,7 @@ With this in mind, \hyperref[con:4.1.4]{Conjecture 4.1.4} can be refined to prod
         0 \quad\quad\quad otherwise
     \end{cases}
 \end{equation}
-\proof{From \colour{red}{3.3.X } we have the generating function for distinct parts. We can adapt the equation to account for parity by representing each partition of \(n\) as \((-1)^{no. \, parts}x^n\). This produces the generating function
+\proof{From \hyperref[eq:3.3.4]{Equation 3.3.4} we have the generating function for distinct parts. We can adapt the equation to account for parity by representing each partition of \(n\) as \((-1)^{no. \, parts}x^n\). This produces the generating function
 \begin{equation}\tag{4.2.4}\label{eq:4.2.4}
     \sum^\infty_{n=0} \left(p_e(n)-p_o(n)\right)x^n =  \prod^\infty_{j=1}\left(1-x^j\right) = (1-x)(1-x^2)...
 \end{equation}
@@ -478,13 +493,13 @@ This generating function produces values for \(\epsilon(n)\) that match with the
 
 Durham University (2026). \textit{Partitions: Worksheet 1-4}.\label{cit:1}
 
-\separate{10}Merriam-Webster (2025). \textit{BIJECTION Definition \& Meaning - Merriam Webster}. [online] \\ Merriam-webster.com. Available at: https://www.merriam-webster.com/dictionary/bijection \\ \([\text{Accessed 9 Mar. 2026}]\).\label{cit:2}
+\separate{10}Merriam-Webster (2025). \textit{BIJECTION Definition \& Meaning - Merriam Webster}. [online] \\ Merriam-webster.com. Available at: \hyperlink{https://www.merriam-webster.com/dictionary/bijection}{https://www.merriam-webster.com/dictionary/bijection} \\ \([\text{Accessed 9 Mar. 2026}]\).\label{cit:2}
 
-\separate{10}Subbarao, M.V. (1971). \textit{Partition Theorems for Euler Pairs.} Proceedings of the American Mathematical Society, [online] 28(2), pp. 330–336. doi:https://doi.org/10.2307/2037963.\label{cit:3}
+\separate{10}Subbarao, M.V. (1971). \textit{Partition Theorems for Euler Pairs.} Proceedings of the American Mathematical Society, [online] 28(2), pp. 330–336. doi: 10.2307/2037963.\label{cit:3}
 
-\separate{10}Yee, A.J. (2008). \textit{Alder’s Conjecture.} Journal für die reine und angewandte Mathematik (Crelle's Journal), [online] 2008(616), pp. 1, 68–88. doi:https://doi.org/10.1515/crelle.2008.018.\label{cit:4}
+\separate{10}Yee, A.J. (2008). \textit{Alder’s Conjecture.} Journal für die reine und angewandte Mathematik (Crelle's Journal), [online] 2008(616), pp. 1, 68–88. doi: 10.1515/crelle.2008.018.\label{cit:4}
 
-\noindent\makebox[\linewidth]{\rule{\linewidth}{0.4pt}}
+\separate{380}\noindent\makebox[\linewidth]{\rule{\linewidth}{0.4pt}}
 
 \subsection*{Plagiarism Declaration}
 
