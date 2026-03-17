@@ -99,8 +99,6 @@
 
 \tableofcontents
 
-\separate{5}\colour{red}{Check page spacings and equation and figure numbers etc.}
-
 %% 
 
 
@@ -147,13 +145,13 @@ Then, to prove \(|A| = |B|\), we take a partition from \(A\) and apply \(f\) and
 \newpage\subsection{Euler's Identity}
 
 \theorem{1.3.1}{\underline{Euler's Identity}\label{thm:1.3.1} states that, for any positive integer \(n\),
-\begin{equation}\tag{1.3.2}\label{equ:1.3.2}
+\begin{equation}\tag{1.3.2}\label{eq:1.3.2}
     p(n|\textit{each part is odd}) = p(n|\textit{each part is distinct})
 \end{equation}}
 This identity can be further generalised to get
 
 \separate{5}\theorem{1.3.3}\label{thm:1.3.3}{For any pair of integers, \(k \geq 2, \; n \geq 1\),
-\begin{equation}\tag{1.3.4}\label{equ:1.3.4}
+\begin{equation}\tag{1.3.4}\label{eq:1.3.4}
     p(n|\textit{no part is a multiple of } k) = p(n|\textit{each part is repeated at most } (k-1) \,{times})
 \end{equation}}
 \proof{Let \(A = P(n|\textit{no part is a multiple of } k)\) and \(B = P(n|\textit{each part is repeated at most } k-1 \,{times})\). We then define \(f:A \rightarrow B\) and \(f^{-1}: B \rightarrow A\) as:
@@ -163,7 +161,7 @@ This identity can be further generalised to get
     \item \(f^{-1}:B \rightarrow A\): Take a partition from \(B\). Any parts with size \(kx, x \in \N^{>0}\) are replaced with \(k\)-length tuples of parts who are \(k\)-times smaller. After all part size multiples of \(k\) are replaced, the resulting partition will be a member of \(A\). i.e., 
     \[f^{-1}: (kx + y + ...) \rightarrow ((x_1 + x_2 + ... + x_k) + y + ...)\]
 \end{itemize}
-Then, to prove \(|A| = |B|\), we take a partition from \(A\) and apply \(f\) and \(f^{-1}\), the resulting partition will be the original partition we started with proving that there must be a bijection between \(A\) and \(B\), and therefore \hyperref[equ:1.3.4]{Equation 1.3.4} holds for any pair of integers, \(k \geq 2, \; n \geq 1\). \hyperref[thm:1.3.1]{Euler's Identity} is a specific example of \hyperref[thm:1.3.3]{Theorem 1.3.3} and therefore, must also be true.}
+Then, to prove \(|A| = |B|\), we take a partition from \(A\) and apply \(f\) and \(f^{-1}\), the resulting partition will be the original partition we started with proving that there must be a bijection between \(A\) and \(B\), and therefore \hyperref[eq:1.3.4]{Equation 1.3.4} holds for any pair of integers, \(k \geq 2, \; n \geq 1\). \hyperref[thm:1.3.1]{Euler's Identity} is a specific example of \hyperref[thm:1.3.3]{Theorem 1.3.3} and therefore, must also be true.}
 
 \subsection{Euler Pairs and Alder's Conjecture}
 
@@ -273,7 +271,7 @@ As we can see in \hyperref[fig:3]{Figure 3}, when the functions are applied in t
         {X} & {X} & {X} & {} \\
         {X} & {X} & {X} \\
         {X} & {X} & {X} \\
-        {X} & {X} & {X} \\
+        {} & {} & {} \\
         {}
     \end{ytableau}
 \]\label{fig:4}
@@ -301,13 +299,13 @@ This leaves the area of \(A_r\) to be \(n-m-s^2\). As the Durfee square is maxim
 \end{equation}
 \proof{Given that, for some value of \(a \geq 1, \; n \geq 0, \;a,n \in \N\),
 \begin{equation}\tag{3.1.3}\label{eq:3.1.3}
-    \frac{1}{1-x^a} = (x^0+x^{a} + x^{2a} + x^{3a} + ... + x^{ia} + ...) = \sum^\infty_{n=0} x^n
+    \frac{1}{1-x^a} = \left(x^0+x^{a} + x^{2a} + x^{3a} + ... + x^{ia} + ...\right) = \sum^\infty_{n=0} x^n
 \end{equation}
 the powers of \(x\) generated are the values which can be represented as partitions solely made from parts of size \(a\). e.g., \(a = 3, \; \frac{1}{1-x^3} = 1 + x^3 + x^6 + x^9 + ... x^{3n} + ...\)
 
 \separate{2}Let \(p_k(n)\) be the number of partitions of \(n\) using parts of at most size \(k\). Based on \hyperref[eq:3.1.3]{Equation 3.1.3}, and that \((x^\alpha)(x^\beta) = x^{\alpha+\beta}\), we can formulate that, for example, 
 \begin{equation}\tag{3.1.4}\label{eq:3.1.4}
-    \sum^\infty_{n=0}p_2(n)x^n = \prod^2_{j=1} \frac{1}{1-x^j} = (1+x+x^2+...)(1+x^2 + x^4+...) = 1 + x + 2x^2 + ...
+    \sum^\infty_{n=0}p_2(n)x^n = \prod^2_{j=1} \frac{1}{1-x^j} = \left(1+x+x^2+...\right)\left(1+x^2 + x^4+...\right) = 1 + x + 2x^2 + ...
 \end{equation}
 which can be generalised to be
 \begin{equation}\tag{3.1.5}\label{eq:3.1.5}
@@ -321,11 +319,11 @@ As \(k \rightarrow \infty\), \(p_k(n) \rightarrow p_\infty(n)\). With this limit
 \begin{equation}\tag{3.2.2}\label{eq:3.2.2}
     \sum^\infty_{n=0}p(n |  \geq 1 \textit{ part of size a})x^n = \left(\prod^{a-1}_{i=1}\frac{1}{1-x^i}\right)\left(\frac{x}{1-x^a}\right)\left(\prod^\infty_{j=a+1}\frac{1}{1-x^j}\right)
 \end{equation}
-\proof{\hyperref[eq:3.1.3]{Equation 3.1.3} can be adjusted to require at least one part of size \(a\),
+\newpage\noindent\proof{\hyperref[eq:3.1.3]{Equation 3.1.3} can be adjusted to require at least one part of size \(a\),
 \begin{equation}\tag{3.2.3}\label{eq:3.2.3}
     \sum^\infty_{n=1}x^n = x^a + x^{2a} + ... = \frac{x}{1-x^a}
 \end{equation}
-\newpage\noindent This removes the \(x^0\) term, hence restricting the partition to have at least one part of size \(a\). This adjustment is then incorporated into \hyperref[eq:3.1.2]{Equation 3.1.2} to produce \hyperref[eq:3.2.2]{Equation 3.2.2} and therefore proves \hyperref[thm:3.2.1]{Theorem 3.2.1}.}
+\noindent This removes the \(x^0\) term, hence restricting the partition to have at least one part of size \(a\). This adjustment is then incorporated into \hyperref[eq:3.1.2]{Equation 3.1.2} to produce \hyperref[eq:3.2.2]{Equation 3.2.2} and therefore proves \hyperref[thm:3.2.1]{Theorem 3.2.1}.}
 
 \separate{5}\theorem{3.2.4}\label{thm:3.2.4}{Given a pair of values \((n, k) \in \N^2, \;n \geq k\), the partition function \(p(n |\textit{exactly k parts})\) can be computed using}
 \begin{equation}\tag{3.2.5}\label{eq:3.2.5}
@@ -337,26 +335,45 @@ As \(k \rightarrow \infty\), \(p_k(n) \rightarrow p_\infty(n)\). With this limit
 \end{equation}
 which is equivalent to \hyperref[eq:3.2.5]{Equation 3.2.5}, proving \hyperref[thm:3.2.4]{Theorem 3.2.4}.}
 
-\subsection{Euler's Identity, Rogers-Ramanujan, and More *}
+\subsection{Revisiting Euler's Identity}
 
-\theorem{3.3.1}\label{thm:3.3.1}{For all \(n > 0, n \in \N\), 
+Earlier, we defined Euler's Identity in \hyperref[thm:1.3.1]{Theorem 1.3.1}. We can now easily prove this using generating functions.
+
 \begin{equation}\tag{3.3.2}\label{eq:3.3.2}
     p(n | \textit{each part is odd}) = p(n | \textit{the parts are distinct})
-\end{equation}}
+\end{equation}
 \proof{We can adapt the generating function for partitions given by \hyperref[thm:3.1.1]{Theorem 3.1.1} to create a generating function for \(p(n|\textit{each part is odd})\) by excluding the even powers of \(x\). We accomplish this by dividing the unchanged generating function by the generating function for partitions made from even parts,
 \begin{equation}\tag{3.3.3}\label{eq:3.3.3}
     \left(\prod^\infty_{j=1} \frac{1}{1-x^{j}}\right)\left(\prod^\infty_{j=1} \frac{1}{1-x^{2j}}\right)^{-1} = \prod^\infty_{j=1}(1+x^j)
 \end{equation}
 Similarly, for \(p(n|\textit{the parts are distinct})\) we can define the term expansion as 
-\[(1+x)(1+x^2)(1+x^3)...\]
+\[(1+x)\left(1+x^2\right)\left(1+x^3\right)...\]
 as each term can either appear 0 or 1 times. When expanded for all \(n\geq1, n \in \N\), we get 
 \begin{equation}\tag{3.3.4}\label{eq:3.3.4}
-    (1+x)(1+x^2)(1+x^3)...(1+x^n)... = \prod^\infty_{j=1}(1+x^j)
+    (1+x)\left(1+x^2\right)\left(1+x^3\right)...\left(1+x^n\right)... = \prod^\infty_{j=1}\left(1+x^j\right)
 \end{equation}
-As the generating functions for these two partitions are equal, their corresponding partition functions must also be equal, proving \hyperref[thm:3.3.1]{Theorem 3.3.1}.}
-\newpage\colour{red}{prove for case k as to link to Euler's identity.}
+As the generating functions for these two partitions are equal, their corresponding partition functions must also be equal, proving \hyperref[thm:1.3.1]{Theorem 1.3.1}.}
 
-\newpage\section{Computing \textit{p(n)}}
+\noindent As seen earlier in \hyperref[thm:1.3.3]{Theorem 1.3.3}, we can generalise \hyperref[eq:1.3.2]{Equation 1.3.2} into \hyperref[eq:1.3.4]{Equation 1.3.4} to work with multiples of \(k\) instead of odd numbers. This can again be proved using generating functions by using a similar method to the above proof.
+\begin{equation}\tag{1.3.4 \small{(Repeated)}}
+    p(n|\textit{no part is a multiple of } k) = p(n|\textit{each part is repeated at most } (k-1) \, \textit{ times})
+\end{equation}
+
+\noindent\proof{We can adapt \hyperref[eq:3.3.3]{Equation 3.3.3} to exclude multiples of \(k\) rather than even numbers (multiples of 2), by adjusting the second generating function.
+\begin{equation}\tag{3.3.5}\label{eq:3.3.5}
+    \left(\prod^\infty_{j=1} \frac{1}{1-x^{j}}\right)\left(\prod^\infty_{j=1} \frac{1}{1-x^{kj}}\right)^{-1} = \prod^\infty_{j=1}\frac{1-x^{kj}}{1-x^j}
+\end{equation}
+Similarly, we can adapt \hyperref[eq:3.3.4]{Equation 3.3.4} to allow for \((k-1)\) repeats of each term. To do this, we define the term expansion as 
+\[\left(1+x+x^2+...+x^{(k-1)}\right)\left(1+x^2+x^4+...+x^{2(k-1)}\right)\left(1+x^3+x^6+...+x^{3(k-1)}\right)...\]
+which can be rewritten as
+\[\left(\frac{1+x+x^2+...+x^k}{1-x}\right)\left(\frac{1+x^2+x^4+...+x^{2k}}{1-x^2}\right)\left(\frac{1+x^3+x^6+...+x^{3k}}{1-x^3}\right)...\]
+When expanded for all \(n\geq1, n \in \N\), we get 
+\begin{equation}\tag{3.3.6}\label{eq:3.3.6}
+    \left(\frac{1+x+x^2+...+x^k}{1-x}\right)\left(\frac{1+x^2+x^4+...+x^{2k}}{1-x^2}\right)... = \prod^\infty_{j=1}\left(\frac{1-x^{kj}}{1-x^j}\right)
+\end{equation}
+As \hyperref[eq:3.3.5]{Equation 3.3.5} \(\equiv\) \hyperref[eq:3.3.6]{Equation 3.3.6}, we can prove \hyperref[thm:1.3.3]{Theorem 1.3.3}.}
+
+\section{Computing \textit{p(n)}}
 
 \subsection{Euler's Discovery and Franklin's Construction}
 
@@ -374,7 +391,7 @@ As the generating functions for these two partitions are equal, their correspond
 \]\label{fig:5}
 {\centering Figure 5: Partition slope and base \par}
 
-\separate{5}\definition{4.1.3}{\underline{Franklin's Construction} is defined as one of two cases,}\label{def:4.1.3}
+\newpage\noindent\definition{4.1.3}{\underline{Franklin's Construction} is defined as one of two cases,}\label{def:4.1.3}
 \begin{itemize}
     \item If \(s > b\), then the base of the partition should be removed and used to form a new slope, as seen in \hyperref[fig:6]{Figure 6}.
 
@@ -484,7 +501,33 @@ and by combining the two summations, we get
 \end{equation}
 This generating function produces values for \(\epsilon(n)\) that match with the piecewise function in \hyperref[eq:4.2.3]{Equation 4.2.3}, proving \hyperref[thm:4.2.2]{Theorem 4.2.2}.}
 
-\newpage\subsection{A Recurrence Relation for \textit{p(n)} and Ramanujan's Congruences *}
+\subsection{A Recurrence Relation for \textit{p(n)} and Ramanujan's Congruences}
+
+\theorem{4.3.1}\label{thm:4.3.1}{Euler wanted to find a more efficient way to compute a value for \(p(n)\). Taking into account the \hyperref[thm:4.2.2]{Pentagonal Number Theorem}, Euler theorised that,}
+\begin{equation}\tag{4.3.2}\label{eq:4.3.2}
+    p(n) = p(n-1) + p(n-2) - p(n-5) - p(n-7) + p(n-12) + p(n - 15)...
+\end{equation}
+\proof{Taking \hyperref[eq:3.1.2]{Equation 3.1.2}, we can multiply both sides by \(\prod^\infty_{j=1}\left(1-x^j\right)\) to produce
+\begin{equation}\tag{4.3.3}\label{eq:4.3.3}
+    \left( \sum^\infty_{n=0} p(n)x^n \right) \left( \prod^\infty_{j=1} \left(1-x^j\right) \right) = 1
+\end{equation}
+Then, using the \hyperref[thm:4.2.2]{Pentagonal Number Theorem}, we can produce
+\begin{equation}\tag{4.3.4}\label{eq:4.3.4}
+    \left( \sum^\infty_{n=0} p(n)x^n \right) \left( \sum^\infty_{k=-\infty} \left( (-1)^kx^{\frac{k(3k-1)}{2}} \right) \right) = 1
+\end{equation}
+which can be multiplied out to get
+\begin{equation}\tag{4.3.5}\label{eq:4.3.5}
+    \sum^\infty_{n=0} \left( \sum^\infty_{k=-\infty}(-1)^k p\left( n-{\frac{k(3k-1)}{2}} \right) \right)x^n = 1
+\end{equation}
+then, equating coefficients of \(x^n\), for \(n=0\) gives \(p(0)=1\), and for \(n > 0\), gives
+\begin{equation}\tag{4.3.6}\label{eq:4.3.6}
+    \sum^\infty_{k=-\infty}(-1)^k p\left( n-{\frac{k(3k-1)}{2}} \right) = 0
+\end{equation}
+\newpage \noindent which, when solving for \(p(n)\) and grouping terms for values of \(\pm k\), gives the generalised pentagonal numbers. This gives \hyperref[eq:4.3.2]{Equation 4.3.2}, proving \hyperref[thm:4.3.1]{Theorem 4.3.1}.}
+
+\noindent Using this information, and the recurrence relation that can be derived from it, Srinivasa Ramanujan discovered the following congruences:
+\[p(5k+4) \equiv 0 \; (mod \; 5) \quad\quad p(7k+5) \equiv 0 \; (mod \; 7) \quad\quad p(11k+6) \equiv 0 \; (mod \; 11)\]
+These can be used to speed up the computation of large partitions, and are proved in \hyperref[cit:5]{(Ramanujan, S., 1921)} which was extracted from the manuscripts of G. H. Hardy after death of Ramanujan in 1920.
 
 \newpage\section*{References}
 \addtocounter{page}{-1}
@@ -495,11 +538,13 @@ Durham University (2026). \textit{Partitions: Worksheet 1-4}.\label{cit:1}
 
 \separate{10}Merriam-Webster (2025). \textit{BIJECTION Definition \& Meaning - Merriam Webster}. [online] \\ Merriam-webster.com. Available at: \hyperlink{https://www.merriam-webster.com/dictionary/bijection}{https://www.merriam-webster.com/dictionary/bijection} \\ \([\text{Accessed 9 Mar. 2026}]\).\label{cit:2}
 
-\separate{10}Subbarao, M.V. (1971). \textit{Partition Theorems for Euler Pairs.} Proceedings of the American Mathematical Society, [online] 28(2), pp. 330–336. doi: 10.2307/2037963.\label{cit:3}
+\separate{10}Subbarao, M.V. (1971). \textit{Partition Theorems for Euler Pairs.} Proceedings of the American Mathematical Society, [online] 28(2), pp. 330–336. doi: https://doi.org/10.2307/2037963.\label{cit:3}
 
-\separate{10}Yee, A.J. (2008). \textit{Alder’s Conjecture.} Journal für die reine und angewandte Mathematik (Crelle's Journal), [online] 2008(616), pp. 1, 68–88. doi: 10.1515/crelle.2008.018.\label{cit:4}
+\separate{10}Yee, A.J. (2008). \textit{Alder’s Conjecture.} Journal für die reine und angewandte Mathematik (Crelle's Journal), [online] 2008(616), pp. 1, 68–88. doi: https://doi.org/10.1515/crelle.2008.018.\label{cit:4}
 
-\separate{380}\noindent\makebox[\linewidth]{\rule{\linewidth}{0.4pt}}
+\separate{10}Ramanujan, S. (1921). \textit{Congruence Properties of Partitions.} Mathematische Zeitschrift, 9(1-2), pp.147–153. doi: https://doi.org/10.1007/bf01378341.\label{cit:5}
+
+\separate{350}\noindent\makebox[\linewidth]{\rule{\linewidth}{0.4pt}}
 
 \subsection*{Plagiarism Declaration}
 
