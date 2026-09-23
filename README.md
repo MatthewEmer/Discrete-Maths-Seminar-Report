@@ -1,6 +1,10 @@
 # Introduction to Partitions
 
-![GitHub License](https://img.shields.io/github/license/MatthewEmer/Discrete-Maths-Seminar-Report) ![GitHub top language](https://img.shields.io/github/languages/top/MatthewEmer/Discrete-Maths-Seminar-Report) ![Repo Size](https://img.shields.io/github/repo-size/MatthewEmer/Discrete-Maths-Seminar-Report) ![GitHub last commit](https://img.shields.io/github/last-commit/MatthewEmer/Discrete-Maths-Seminar-Report)
+![GitHub top language](https://img.shields.io/github/languages/top/MatthewEmer/Discrete-Maths-Seminar-Report) ![Repo Size](https://img.shields.io/github/repo-size/MatthewEmer/Discrete-Maths-Seminar-Report) ![GitHub last commit](https://img.shields.io/github/last-commit/MatthewEmer/Discrete-Maths-Seminar-Report)
+
+## Terms of Use
+
+This paper is here on a view-only basis. I do not give permission for it to be copied, modified, or otherwise manipulated in any way. To discuss any potential uses, please see my contact information on [my GitHub profile](https://github.com/MatthewEmer).
 
 ## Description
 
