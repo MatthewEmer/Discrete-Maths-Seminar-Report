@@ -22,7 +22,7 @@ This repository is here as an archive, and will no longer be updated.
 
 ![Repo Size](https://img.shields.io/github/repo-size/MatthewEmer/Discrete-Maths-Seminar-Report)
 
-To use this repository, you can download the pdf from each year from their corresponding folders, or view them in place on the repository.
+To use this repository, you can download the either pdf from their corresponding folders, or view them in place on the repository.
 
 ## Note from the Developer
 
