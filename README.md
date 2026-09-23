@@ -8,7 +8,7 @@ This paper is here on a view-only basis. I do not give permission for it to be c
 
 ## Description
 
-Thank you for choosing to view this repository. It contains two folders, one with my original seminar report, as it was when I submitted it, and another with the same paper content, but put into [LaTeX File Template's v.4.1.2](https://github.com/MatthewEmer/LaTeX-File-Template/releases/tag/v.4.1.2).
+Thank you for choosing to view this repository. It contains two folders, one with my original seminar report, as it was when I submitted it, and another with the same paper content, but put into [LaTeX File Template's v.4.1.2](https://github.com/MatthewEmer/LaTeX-File-Template/releases/tag/v.4.1.2). 
 
 ## Development & Maintenance
 
